@@ -1,0 +1,6 @@
+Private-Package: framesis.weka
+Bundle-Activator: framesis.weka.WekaActivator
+Export-Package: framesis.weka.Tasks,\
+	framesis.weka.DataPreparations
+Import-Package: framesis.api,\
+	*

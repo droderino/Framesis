@@ -1,0 +1,14 @@
+<project default="main" name="framesis.weka" basedir=".">
+	<target name="main">
+		<taskdef resource="aQute/bnd/ant/taskdef.properties"/>
+		
+		<bnd 
+			eclipse="true"
+			failok="false"
+			exceptions="true"
+			output="lib"
+			files="framesis.weka.bnd"/>
+		
+		<copy todir="../framesis/bundle" file="lib/framesis.weka.jar"/>
+	</target>
+</project>
