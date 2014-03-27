@@ -1,0 +1,2 @@
+Export-Package: framesis.api;version=1.0.0,\
+	framesis.DataHelper;version=1.0.0

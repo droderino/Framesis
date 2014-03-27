@@ -1,0 +1,2 @@
+Private-Package: framesis.http
+Bundle-Activator: framesis.http.Activator

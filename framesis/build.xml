@@ -1,0 +1,10 @@
+<project default="main" name="framesis" basedir=".">
+	<target name="main">
+		<jar destfile="framesis.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="framesis.Main"/>
+				<attribute name="Class-Path" value="lib/felix.jar"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
