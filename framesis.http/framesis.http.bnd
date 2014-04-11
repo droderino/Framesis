@@ -1,2 +1,3 @@
 Private-Package: framesis.http
 Bundle-Activator: framesis.http.Activator
+Bundle-Version: 1.0.1

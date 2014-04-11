@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/framesis/lib/felix.jar"/>
+	<classpathentry kind="lib" path="/framesis/bundle/org.apache.felix.http.bundle-2.2.0.jar"/>
+	<classpathentry kind="lib" path="/framesis/bundle/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

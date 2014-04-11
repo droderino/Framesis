@@ -1,0 +1,6 @@
+Private-Package: framesis.demo
+Bundle-Activator: framesis.demo.DemoActivator
+Export-Package: framesis.demo
+Import-Package: framesis.api,\
+	*,\
+	org.osgi.framework

@@ -1,11 +1,42 @@
 package framesis.api;
 
+import java.io.File;
+import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("rawtypes")
 public class Analysis {
 
-	private TextMiningTask task;
+	private Scenario scenario;
+	private DataPreparation preparation;
+	private String dataSource;
+	
+	public void setDataPreparation(DataPreparation prep)
+	{
+		this.preparation = prep;
+	}
+	
+	public void setScenario(Scenario scenario)
+	{
+		this.scenario = scenario;
+	}
+	
+	public void setDataSource(String source)
+	{
+		this.dataSource = source;
+	}
+	
+	public void execute()
+	{
+		List<SubScenario> subScens = scenario.getExecSequence();
+		for(SubScenario sub : subScens)
+			System.out.println(sub.getName());
+	}
+	
+	public File getResults()
+	{
+		return null;
+	}
+	/*private TextMiningTask task;
 	
 	public void setTextMiningTask(TextMiningTask task)
 	{
@@ -24,5 +55,5 @@ public class Analysis {
 		tmParams.put("preparatedFile", preparatedFile);
 		String processedFile = execute(tmParams);
 		return processedFile;
-	}
+	}*/
 }
