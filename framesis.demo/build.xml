@@ -1,4 +1,4 @@
-<project default="main" name="framesis.core" basedir=".">
+<project default="main" name="framesis.demo" basedir=".">
 	<target name="main">
 		<taskdef resource="aQute/bnd/ant/taskdef.properties"/>
 		
