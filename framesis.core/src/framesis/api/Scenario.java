@@ -2,8 +2,10 @@ package framesis.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import framesis.filemanagement.FileManager;
 
@@ -14,11 +16,13 @@ public class Scenario {
 	private String name;
 	private FileManager fileManager;
 	private File outputDir;
+	private URI dataSource;
 	
-	public Scenario()
+	public Scenario(String name)
 	{
 		this.subScenarios = new LinkedList<SubScenario>();
 		this.preparations = new LinkedList<DataPreparation>();
+		this.name = name;
 		this.outputDir = this.createTempDir(name);
 		try {
 			this.fileManager = new FileManager(this.outputDir.getAbsolutePath());
@@ -44,16 +48,30 @@ public class Scenario {
 	
 	public void execute()
 	{
+		if(dataSource == null)
+			return;
+		
+		URI tmpSource = dataSource;
+		Map<String, String> config;
+		
 		for(DataPreparation p : preparations)
 		{
-			p.prepare();
+			config = p.getConfig();
+			config.put(DataPreparation.SOURCE, tmpSource.toString());
+			
+			tmpSource = p.prepare();
 		}
 		
 		for(SubScenario s : subScenarios)
 		{
+			config = s.getConfig();
+			config.put(SubScenario.SOURCE, tmpSource.toString());
+			
 			s.execute();
 			try {
-				fileManager.addFile( fileManager.writeFile(s.getName(), s.getResults()) );
+				File res = fileManager.writeFile(s.getName() + ".txt", s.getResults());
+				fileManager.addFile( res );
+				tmpSource = res.toURI();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -67,12 +85,17 @@ public class Scenario {
 	
 	public File exportResults()
 	{
-		return fileManager.exportFiles(getName());
+		return fileManager.exportFiles(getName() + ".zip");
 	}
 	
 	public List<SubScenario> getExecSequence()
 	{
 		return this.subScenarios;
+	}
+	
+	public void clean()
+	{
+		this.fileManager.deleteAll();
 	}
 
 	public String getName() {
@@ -92,5 +115,13 @@ public class Scenario {
 		tmpDir.mkdir();
 		
 		return tmpDir;
+	}
+
+	public URI getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(URI dataSource) {
+		this.dataSource = dataSource;
 	}
 }

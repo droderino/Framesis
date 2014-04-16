@@ -1,5 +1,6 @@
 package framesis.demo;
 
+import java.net.URI;
 import java.util.Map;
 
 import framesis.api.DataPreparation;
@@ -7,7 +8,7 @@ import framesis.api.DataPreparation;
 public class DataPreparation1 implements DataPreparation{
 
 	@Override
-	public String prepare() {
+	public URI prepare() {
 		// TODO Auto-generated method stub
 		return null;
 	}

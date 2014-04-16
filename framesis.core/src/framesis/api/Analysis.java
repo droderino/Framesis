@@ -1,15 +1,12 @@
 package framesis.api;
 
 import java.io.File;
+import java.net.URI;
 
 public class Analysis {
 
 	private Scenario scenario;
 	private String dataSource;
-	
-	public Analysis()
-	{
-	}
 	
 	public void setScenario(Scenario scenario)
 	{
@@ -23,12 +20,18 @@ public class Analysis {
 	
 	public void execute()
 	{
+		this.scenario.setDataSource(URI.create(dataSource));
 		this.scenario.execute();
 	}
 	
 	public File getResults()
 	{
 		return this.scenario.exportResults();
+	}
+	
+	public URI getUri()
+	{
+		return URI.create(dataSource);
 	}
 	/*private TextMiningTask task;
 	

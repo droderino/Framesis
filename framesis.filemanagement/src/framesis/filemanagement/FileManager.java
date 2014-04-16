@@ -42,6 +42,15 @@ public class FileManager {
 		file.delete();
 	}
 	
+	public void deleteAll()
+	{
+		for(File f : files)
+		{
+			files.remove(f);
+			f.delete();
+		}
+	}
+	
 	public List<File> getFiles()
 	{
 		return this.files;

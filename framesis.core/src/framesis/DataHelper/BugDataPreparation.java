@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class BugDataPreparation implements DataPreparation{
 	private Map<String, String> params;
 	
 	@Override
-	public String prepare() {
+	public URI prepare() {
 
 		Map<String, String> csv = parseCsv(params.get("CSV"));
 		try {

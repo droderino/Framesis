@@ -3,6 +3,7 @@ package framesis.weka.DataPreparations;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +21,7 @@ public class AndroidBugsToArff extends DefaultHandler implements DataPreparation
 	private Map<String, String> params;
 	
 	@Override
-	public String prepare() {		
+	public URI prepare() {		
 		try {
 			SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
 			AndroidBugsXmlHelper helper = new AndroidBugsXmlHelper();
@@ -38,7 +39,7 @@ public class AndroidBugsToArff extends DefaultHandler implements DataPreparation
 			e.printStackTrace();
 		}
 		
-		return params.get(PREPARATEDFILE);
+		return URI.create(params.get(PREPARATEDFILE));
 	}
 
 	@Override

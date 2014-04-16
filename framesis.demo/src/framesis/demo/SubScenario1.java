@@ -1,5 +1,6 @@
 package framesis.demo;
 
+import java.net.URI;
 import java.util.Map;
 
 import framesis.api.SubScenario;
@@ -7,9 +8,9 @@ import framesis.api.SubScenario;
 public class SubScenario1 implements SubScenario{
 
 	@Override
-	public void execute() {
+	public URI execute() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
