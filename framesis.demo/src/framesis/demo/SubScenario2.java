@@ -7,7 +7,7 @@ import framesis.api.SubScenario;
 public class SubScenario2 implements SubScenario{
 
 	@Override
-	public void execute(Map<String, String> params) {
+	public void execute() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,6 +32,18 @@ public class SubScenario2 implements SubScenario{
 
 	@Override
 	public String getResults() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setConfig(Map<String, String> params) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Map<String, String> getConfig() {
 		// TODO Auto-generated method stub
 		return null;
 	}

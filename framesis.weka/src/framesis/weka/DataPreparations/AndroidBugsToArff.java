@@ -17,8 +17,10 @@ import framesis.api.DataPreparation;
 
 public class AndroidBugsToArff extends DefaultHandler implements DataPreparation {
 
+	private Map<String, String> params;
+	
 	@Override
-	public String prepare(Map<String, String> params) {		
+	public String prepare() {		
 		try {
 			SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
 			AndroidBugsXmlHelper helper = new AndroidBugsXmlHelper();
@@ -37,6 +39,29 @@ public class AndroidBugsToArff extends DefaultHandler implements DataPreparation
 		}
 		
 		return params.get(PREPARATEDFILE);
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "AndroidBugsToArff";
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return "convert dump of Android Bug Database to Weka ARFF";
+	}
+
+	@Override
+	public void setConfig(Map<String, String> params) {
+		this.params = params;
+	}
+
+	@Override
+	public Map<String, String> getConfig() {
+		// TODO Auto-generated method stub
+		return this.params;
 	}
 	
 	

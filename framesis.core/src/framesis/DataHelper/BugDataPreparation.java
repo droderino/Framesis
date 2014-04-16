@@ -26,8 +26,10 @@ import framesis.api.DataPreparation;
 
 public class BugDataPreparation implements DataPreparation{
 
+	private Map<String, String> params;
+	
 	@Override
-	public String prepare(Map<String, String> params) {
+	public String prepare() {
 
 		Map<String, String> csv = parseCsv(params.get("CSV"));
 		try {
@@ -96,5 +98,28 @@ public class BugDataPreparation implements DataPreparation{
 		DOMSource source = new DOMSource(xml);
 		StreamResult result = new StreamResult(new File(filename));
 		transformer.transform(source, result);
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setConfig(Map<String, String> params) {
+		this.params = params;
+	}
+
+	@Override
+	public Map<String, String> getConfig() {
+		// TODO Auto-generated method stub
+		return this.params;
 	}
 }

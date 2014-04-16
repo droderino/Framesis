@@ -1,0 +1,14 @@
+<project default="main" name="framesis.filemanagement" basedir=".">
+	<target name="main">
+		<taskdef resource="aQute/bnd/ant/taskdef.properties"/>
+		
+		<bnd 
+			eclipse="true"
+			failok="false"
+			exceptions="true"
+			output="lib"
+			files="framesis.filemanagement.bnd"/>
+		
+		<copy todir="../framesis/bundle" file="lib/framesis.filemanagement.jar"/>
+	</target>
+</project>

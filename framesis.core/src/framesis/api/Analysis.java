@@ -1,18 +1,14 @@
 package framesis.api;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
 
 public class Analysis {
 
 	private Scenario scenario;
-	private DataPreparation preparation;
 	private String dataSource;
 	
-	public void setDataPreparation(DataPreparation prep)
+	public Analysis()
 	{
-		this.preparation = prep;
 	}
 	
 	public void setScenario(Scenario scenario)
@@ -27,14 +23,12 @@ public class Analysis {
 	
 	public void execute()
 	{
-		List<SubScenario> subScens = scenario.getExecSequence();
-		for(SubScenario sub : subScens)
-			System.out.println(sub.getName());
+		this.scenario.execute();
 	}
 	
 	public File getResults()
 	{
-		return null;
+		return this.scenario.exportResults();
 	}
 	/*private TextMiningTask task;
 	
