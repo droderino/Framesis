@@ -1,7 +1,11 @@
 package framesis.webservice.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
 public class SubScenarioDump implements Serializable {
 
 	/**
@@ -11,6 +15,7 @@ public class SubScenarioDump implements Serializable {
 	private String name;
 	private String phase;
 	private String description;
+	private List<String> config;
 	
 	public String getName() {
 		return name;
@@ -29,5 +34,11 @@ public class SubScenarioDump implements Serializable {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public List<String> getConfig() {
+		return config;
+	}
+	public void setConfig(List<String> config) {
+		this.config = config;
 	}
 }

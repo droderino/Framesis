@@ -13,6 +13,7 @@ public class Activator implements BundleActivator{
 	public void start(BundleContext arg0) throws Exception {
 		SubScenarioRegistry.register(SubScenario1.class);
 		SubScenarioRegistry.register(SubScenario2.class);
+		SubScenarioRegistry.register(DummyScenario.class);
 		
 		PreparationRegistry.register(DataPreparation1.class);
 		PreparationRegistry.register(DataPreparation2.class);
@@ -22,6 +23,7 @@ public class Activator implements BundleActivator{
 	public void stop(BundleContext arg0) throws Exception {
 		SubScenarioRegistry.deregister(SubScenario1.class);
 		SubScenarioRegistry.deregister(SubScenario2.class);
+		SubScenarioRegistry.deregister(DummyScenario.class);
 		
 		PreparationRegistry.deregister(DataPreparation1.class);
 		PreparationRegistry.deregister(DataPreparation2.class);

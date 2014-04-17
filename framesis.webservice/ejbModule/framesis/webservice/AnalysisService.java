@@ -1,7 +1,13 @@
 package framesis.webservice;
 
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -13,6 +19,7 @@ import org.glassfish.osgicdi.OSGiService;
 
 import framesis.api.Analysis;
 import framesis.api.DataPreparation;
+import framesis.api.Scenario;
 import framesis.api.SubScenario;
 import framesis.api.SubScenarioRegistry;
 import framesis.webservice.dto.DataPreparationDump;
@@ -74,5 +81,68 @@ public class AnalysisService implements AnalysisServiceInterface {
 	public void createDP(DataPreparationDump dump) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<String> getSubScenConfig(String name) {
+		List<SubScenario> subs = eao.getSubScenarios();
+		for(SubScenario element : subs)
+		{
+			if(element.getName().equals(name))
+			{
+				Set<Entry<String,String>> set = element.getConfig().entrySet();
+				Iterator<Entry<String,String>> iter = set.iterator();
+				
+				List<String> ret = new ArrayList<String>();
+				while(iter.hasNext())
+				{
+					Entry<String,String> e = iter.next();
+					ret.add(e.getKey());
+					ret.add(e.getValue());
+				}
+				return ret;
+			}
+		}
+		return null;
+	}
+	
+	
+
+	@Override
+	public String execute(List<SubScenarioDump> list, String sourceURI) {
+		List<SubScenario> subs = eao.getSubScenarios();
+		
+		Scenario scen = new Scenario("dummy");
+		for(SubScenarioDump d : list)
+		{
+			SubScenario newSub = getSubScenario(d, subs);
+			scen.addScenario(newSub);
+		}
+		
+		Analysis analyse = new Analysis();
+		analyse.setScenario(scen);
+		analyse.setDataSource(sourceURI);
+		analyse.execute();
+		
+		return "success";
+	}
+	
+	private SubScenario getSubScenario(SubScenarioDump dump, List<SubScenario> list)
+	{
+		Iterator<SubScenario> iter = list.iterator();
+		while(iter.hasNext())
+		{
+			SubScenario cur = iter.next();
+			if(cur.getName().equals(dump.getName()))
+			{
+				return conv.fromSubScenarioDump(dump, cur);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public String getURI(String source) {
+		return URI.create(source).toString();
 	}
 }

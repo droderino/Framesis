@@ -1,6 +1,7 @@
 package framesis.demo;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Map;
 
 import framesis.api.SubScenario;
@@ -46,7 +47,7 @@ public class SubScenario2 implements SubScenario{
 	@Override
 	public Map<String, String> getConfig() {
 		// TODO Auto-generated method stub
-		return null;
+		return new HashMap<String, String>();
 	}
 
 }

@@ -66,10 +66,10 @@ public class Scenario {
 		{
 			config = s.getConfig();
 			config.put(SubScenario.SOURCE, tmpSource.toString());
-			
+
 			s.execute();
 			try {
-				File res = fileManager.writeFile(s.getName() + ".txt", s.getResults());
+				File res = fileManager.writeFile(subScenarios.indexOf(s) + s.getName() + ".txt", s.getResults());
 				fileManager.addFile( res );
 				tmpSource = res.toURI();
 			} catch (IOException e) {
