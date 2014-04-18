@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType
+@XmlType(propOrder={"name", "phase", "description", "config"})
 public class SubScenarioDump implements Serializable {
 
 	/**

@@ -3,6 +3,7 @@ package framesis.api;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class Scenario {
 	
 	public Scenario(String name)
 	{
-		this.subScenarios = new LinkedList<SubScenario>();
+		this.subScenarios = new ArrayList<SubScenario>();
 		this.preparations = new LinkedList<DataPreparation>();
 		this.name = name;
 		this.outputDir = this.createTempDir(name);
@@ -69,6 +70,7 @@ public class Scenario {
 
 			s.execute();
 			try {
+				int i = subScenarios.indexOf(s);
 				File res = fileManager.writeFile(subScenarios.indexOf(s) + s.getName() + ".txt", s.getResults());
 				fileManager.addFile( res );
 				tmpSource = res.toURI();

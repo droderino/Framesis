@@ -12,6 +12,8 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
@@ -35,8 +37,8 @@ import framesis.webservice.util.Conversion;
 @WebService
 public class AnalysisService implements AnalysisServiceInterface {
 
-	/*@Inject @OSGiService(dynamic=true)
-	private static SubScenarioRegistry reg;*/
+	@Inject @OSGiService(dynamic=true)
+	private Analysis analyse;
 	
 	@EJB
 	AnalysisEao eao;
@@ -51,6 +53,7 @@ public class AnalysisService implements AnalysisServiceInterface {
     }    
 
 	@Override
+	@WebResult(name="SubScenarioDump")
 	public List<SubScenarioDump> dumpSubScenarios() {
 		List<SubScenarioDump> dump = new ArrayList<SubScenarioDump>();
 		List<SubScenario> subScens = eao.getSubScenarios();
@@ -58,29 +61,6 @@ public class AnalysisService implements AnalysisServiceInterface {
 			dump.add(conv.fromSubScenario(element));
 		
 		return dump;
-	}
-
-	@Override
-	public List<DataPreparationDump> dumpDataPreparations() {
-		List<DataPreparationDump> dump = new ArrayList<DataPreparationDump>();
-		List<DataPreparation> preps = eao.getDataPreparations();
-		for(DataPreparation element : preps)
-			dump.add(conv.fromDataPreparation(element));
-		
-		return dump;
-	}
-
-	@Override
-	public String executeScenario(List<DataPreparationDump> preps,
-			List<SubScenarioDump> subScens) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void createDP(DataPreparationDump dump) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -105,11 +85,11 @@ public class AnalysisService implements AnalysisServiceInterface {
 		}
 		return null;
 	}
-	
-	
 
 	@Override
-	public String execute(List<SubScenarioDump> list, String sourceURI) {
+	public String execute(
+			@WebParam(name="SubScenarioDump") List<SubScenarioDump> list, 
+			@WebParam(name="sourceURI") String sourceURI) {
 		List<SubScenario> subs = eao.getSubScenarios();
 		
 		Scenario scen = new Scenario("dummy");
@@ -119,7 +99,6 @@ public class AnalysisService implements AnalysisServiceInterface {
 			scen.addScenario(newSub);
 		}
 		
-		Analysis analyse = new Analysis();
 		analyse.setScenario(scen);
 		analyse.setDataSource(sourceURI);
 		analyse.execute();
