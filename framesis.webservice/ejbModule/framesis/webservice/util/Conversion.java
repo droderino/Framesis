@@ -12,7 +12,6 @@ import javax.ejb.Stateless;
 
 import framesis.api.DataPreparation;
 import framesis.api.SubScenario;
-import framesis.webservice.dto.DataPreparationDump;
 import framesis.webservice.dto.SubScenarioDump;
 
 @Stateless
@@ -25,14 +24,6 @@ public class Conversion {
 		dump.setPhase(element.getPhase());
 		dump.setDescription(element.getDescription());
 		dump.setConfig(this.fromMap(element.getConfig()));
-		return dump;
-	}
-	
-	public DataPreparationDump fromDataPreparation(DataPreparation element)
-	{
-		DataPreparationDump dump = new DataPreparationDump();
-		dump.setName(element.getName());
-		dump.setDescription(element.getDescription());
 		return dump;
 	}
 	

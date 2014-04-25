@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -13,18 +12,13 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jws.WebParam;
-import javax.jws.WebResult;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
 
 import org.glassfish.osgicdi.OSGiService;
 
 import framesis.api.Analysis;
-import framesis.api.DataPreparation;
 import framesis.api.Scenario;
 import framesis.api.SubScenario;
-import framesis.api.SubScenarioRegistry;
-import framesis.webservice.dto.DataPreparationDump;
 import framesis.webservice.dto.SubScenarioDump;
 import framesis.webservice.eao.AnalysisEao;
 import framesis.webservice.util.Conversion;
@@ -51,17 +45,6 @@ public class AnalysisService implements AnalysisServiceInterface {
     public AnalysisService() {
         // TODO Auto-generated constructor stub
     }    
-
-	@Override
-	@WebResult(name="SubScenarioDump")
-	public List<SubScenarioDump> dumpSubScenarios() {
-		List<SubScenarioDump> dump = new ArrayList<SubScenarioDump>();
-		List<SubScenario> subScens = eao.getSubScenarios();
-		for(SubScenario element : subScens)
-			dump.add(conv.fromSubScenario(element));
-		
-		return dump;
-	}
 
 	@Override
 	public List<String> getSubScenConfig(String name) {
@@ -123,5 +106,15 @@ public class AnalysisService implements AnalysisServiceInterface {
 	@Override
 	public String getURI(String source) {
 		return URI.create(source).toString();
+	}
+
+	@Override
+	public List<SubScenarioDump> dumpSubScenarios() {
+		List<SubScenario> subs = eao.getSubScenarios();
+		List<SubScenarioDump> dumps = new ArrayList<SubScenarioDump>();
+		for(SubScenario s : subs)
+			dumps.add(conv.fromSubScenario(s));
+		
+		return dumps;
 	}
 }

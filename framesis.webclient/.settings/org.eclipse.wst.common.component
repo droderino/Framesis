@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="framesis.WebClient">
+    <wb-module deploy-name="framesis.webclient">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="framesis.WebClient"/>
-        <property name="java-output-path" value="/framesis.WebClient/build/classes"/>
+        <property name="context-root" value="framesis.webclient"/>
+        <property name="java-output-path" value="/framesis.webclient/build/classes"/>
     </wb-module>
 </project-modules>

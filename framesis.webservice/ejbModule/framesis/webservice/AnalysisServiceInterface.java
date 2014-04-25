@@ -1,11 +1,9 @@
 package framesis.webservice;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.Remote;
 
-import framesis.webservice.dto.DataPreparationDump;
 import framesis.webservice.dto.SubScenarioDump;
 
 @Remote
