@@ -12,10 +12,16 @@ public class SubScenarioDump implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9081667374215194280L;
+	
+	public static final String PHASE_DE = "Data Extraction";
+	public static final String PHASE_PRE = "Preprocessing";
+	public static final String PHASE_AN = "Analysis";
+	public static final String PHASE_EVAL = "Evaluation";
+	
 	private String name;
 	private String phase;
 	private String description;
-	private List<String> config;
+	private List<ConfigElementDump> config;
 	
 	public String getName() {
 		return name;
@@ -35,10 +41,10 @@ public class SubScenarioDump implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<String> getConfig() {
+	public List<ConfigElementDump> getConfig() {
 		return config;
 	}
-	public void setConfig(List<String> config) {
+	public void setConfig(List<ConfigElementDump> config) {
 		this.config = config;
 	}
 }

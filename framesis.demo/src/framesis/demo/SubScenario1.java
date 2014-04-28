@@ -14,6 +14,8 @@ public class SubScenario1 implements SubScenario{
 
 	private Map<String, String> config;
 	private String result;
+	private String description;
+	private String phase;
 	private String name;
 	
 	public SubScenario1()
@@ -23,6 +25,8 @@ public class SubScenario1 implements SubScenario{
 		this.config.put("foo", "bar");
 		
 		this.name = "SubScenario1";
+		this.description = "sample1";
+		this.phase = SubScenario.PHASE_DE;
 		this.result = "";
 	}
 	@Override
@@ -55,13 +59,13 @@ public class SubScenario1 implements SubScenario{
 	@Override
 	public String getPhase() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.phase;
 	}
 
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.description;
 	}
 
 	@Override

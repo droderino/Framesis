@@ -16,7 +16,7 @@ import javax.jws.WebService;
 
 import org.glassfish.osgicdi.OSGiService;
 
-import framesis.api.Analysis;
+import framesis.api.AnalysisInterface;
 import framesis.api.Scenario;
 import framesis.api.SubScenario;
 import framesis.webservice.dto.SubScenarioDump;
@@ -32,7 +32,7 @@ import framesis.webservice.util.Conversion;
 public class AnalysisService implements AnalysisServiceInterface {
 
 	@Inject @OSGiService(dynamic=true)
-	private Analysis analyse;
+	private AnalysisInterface analyse;
 	
 	@EJB
 	AnalysisEao eao;

@@ -13,7 +13,6 @@ import framesis.filemanagement.FileManager;
 public class Scenario {
 
 	private List<SubScenario> subScenarios;
-	private List<DataPreparation> preparations;
 	private String name;
 	private FileManager fileManager;
 	private File outputDir;
@@ -22,7 +21,6 @@ public class Scenario {
 	public Scenario(String name)
 	{
 		this.subScenarios = new ArrayList<SubScenario>();
-		this.preparations = new LinkedList<DataPreparation>();
 		this.name = name;
 		this.outputDir = this.createTempDir(name);
 		try {
@@ -42,11 +40,6 @@ public class Scenario {
 		this.subScenarios.remove(element);
 	}
 	
-	public void addPreparation(DataPreparation element)
-	{
-		this.preparations.add(element);
-	}
-	
 	public void execute()
 	{
 		if(dataSource == null)
@@ -54,14 +47,6 @@ public class Scenario {
 		
 		URI tmpSource = dataSource;
 		Map<String, String> config;
-		
-		for(DataPreparation p : preparations)
-		{
-			config = p.getConfig();
-			config.put(DataPreparation.SOURCE, tmpSource.toString());
-			
-			tmpSource = p.prepare();
-		}
 		
 		for(SubScenario s : subScenarios)
 		{

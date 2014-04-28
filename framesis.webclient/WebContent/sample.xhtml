@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+    <h:head>
+        <title>SO question 6089924</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:selectOneListbox value="#{bean.selected}">
+                <f:selectItem itemValue="#{null}" itemLabel="Select..." />
+                <f:selectItem itemValue="one" />
+                <f:selectItem itemValue="two" />
+                <f:selectItem itemValue="three" />
+                <f:ajax listener="#{bean.listener}" render="result" />
+            </h:selectOneListbox>
+
+            <h:commandButton value="commandButton" action="#{bean.submit}">
+                <f:ajax listener="#{bean.listener}" render="result" />
+            </h:commandButton>
+
+            <h:outputText id="result" value="#{bean.selected} #{bean.result}" />
+
+            <h:messages />
+        </h:form>
+    </h:body>
+</html>

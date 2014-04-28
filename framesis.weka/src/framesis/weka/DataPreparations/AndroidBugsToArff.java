@@ -14,13 +14,13 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import weka.core.Instances;
-import framesis.api.DataPreparation;
 
-public class AndroidBugsToArff extends DefaultHandler implements DataPreparation {
+public class AndroidBugsToArff extends DefaultHandler {
 
+	public static final String FILE = "sourceFile";
+	public static final String PREPARATEDFILE = "preparatedFile";
 	private Map<String, String> params;
 	
-	@Override
 	public URI prepare() {		
 		try {
 			SAXParser saxParser = SAXParserFactory.newInstance().newSAXParser();
@@ -42,24 +42,20 @@ public class AndroidBugsToArff extends DefaultHandler implements DataPreparation
 		return URI.create(params.get(PREPARATEDFILE));
 	}
 
-	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return "AndroidBugsToArff";
 	}
 
-	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return "convert dump of Android Bug Database to Weka ARFF";
 	}
 
-	@Override
 	public void setConfig(Map<String, String> params) {
 		this.params = params;
 	}
 
-	@Override
 	public Map<String, String> getConfig() {
 		// TODO Auto-generated method stub
 		return this.params;

@@ -14,6 +14,8 @@ public class DummyScenario implements SubScenario{
 
 	private Map<String, String> config;
 	private String result;
+	private String description;
+	private String phase;
 	private String name;
 	
 	public DummyScenario()
@@ -23,6 +25,8 @@ public class DummyScenario implements SubScenario{
 		this.config.put("foo", "bar");
 		
 		this.name = "DummyScenario";
+		this.description = "nothing";
+		this.phase = SubScenario.PHASE_EVAL;
 		this.result = "";
 	}
 	
@@ -54,12 +58,12 @@ public class DummyScenario implements SubScenario{
 
 	@Override
 	public String getPhase() {
-		return "test";
+		return this.phase;
 	}
 
 	@Override
 	public String getDescription() {
-		return "does nothing";
+		return this.description;
 	}
 
 	@Override

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Szenrio Konfiguration</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<c:set var="deSize" value="#{serviceBean.subDe.size()}"></c:set>
+	<c:set var="preSize" value="#{serviceBean.subPre.size()}"></c:set>
+	<c:set var="anSize" value="#{serviceBean.subAn.size()}"></c:set>
+	<c:set var="evalSize" value="#{serviceBean.subEval.size()}"></c:set>
+	
+	<h:form id="subSenarios">
+
+		<h:panelGrid columns="4">
+			<f:facet name="header">
+				<h:outputLabel value="Sub-Scenarios" />
+			</f:facet>
+			
+			<h:outputLabel value="Data Extraction"/>
+			<h:outputLabel value="Preprocessing"/>
+			<h:outputLabel value="Analysis"/>
+			<h:outputLabel value="Evaluation"/>
+			
+			<h:selectOneListbox value="#{serviceBean.select}" styleClass="listbox" size="#{deSize gt 1 ? deSize : 2}">
+				<f:selectItems value="#{serviceBean.subDe}" var="de"
+					itemLabel="#{de.name}" itemValue="#{de.name}"></f:selectItems>
+				<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
+			</h:selectOneListbox>
+			
+			<h:selectOneListbox value="#{serviceBean.select}" styleClass="listbox" size="#{preSize gt 1 ? preSize : 2}">
+				<f:selectItems value="#{serviceBean.subPre}" var="pre"
+					itemLabel="#{pre.name}" itemValue="#{pre.name}"></f:selectItems>
+				<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
+			</h:selectOneListbox>
+			
+			<h:selectOneListbox value="#{serviceBean.select}" styleClass="listbox" size="#{anSize gt 1 ? anSize : 2}">
+				<f:selectItems value="#{serviceBean.subAn}" var="an"
+					itemLabel="#{an.name}" itemValue="#{an.name}"></f:selectItems>
+				<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
+			</h:selectOneListbox>
+			
+			<h:selectOneListbox value="#{serviceBean.select}" styleClass="listbox" size="#{evalSize gt 1 ? evalSize : 2}">
+				<f:selectItems value="#{serviceBean.subEval}" var="eval"
+					itemLabel="#{eval.name}" itemValue="#{eval.name}"></f:selectItems>
+				<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
+			</h:selectOneListbox>
+
+		</h:panelGrid>
+
+	</h:form>
+
+	<h:form id="details">
+		<h:outputLabel value="Sub-Szenario Details"></h:outputLabel>
+
+		<h:panelGrid columns="2" columnClasses="gridClass" cellspacing="3">
+		
+			<h:panelGrid columns="2" >
+				<h:outputLabel value="Name" />
+				<h:outputText value="#{serviceBean.selectedScen.name}" />
+
+				<h:outputLabel value="Description" />
+				<h:outputText value="#{serviceBean.selectedScen.description}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid>
+				<f:facet name="header">
+					<h:outputLabel value="Konfiguration"/>
+				</f:facet>
+				
+				<h:dataTable id="configTable"
+					value="#{serviceBean.selectedScen.config}" var="o">
+					<h:column>
+						<f:facet name="header">Parameter</f:facet>
+						#{o.parameter}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Value</f:facet>
+						<h:inputText value="#{o.value}"></h:inputText>
+					</h:column>
+				</h:dataTable>
+				
+				<h:commandButton value="save"></h:commandButton>
+				
+			</h:panelGrid>
+
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

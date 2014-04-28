@@ -23,18 +23,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import framesis.api.DataPreparation;
 
-public class BugDataPreparation implements DataPreparation{
+public class BugDataPreparation {
 
+	public static final String FILE = "sourceFile";
 	private Map<String, String> params;
 	
-	@Override
 	public URI prepare() {
 
 		Map<String, String> csv = parseCsv(params.get("CSV"));
 		try {
-			modifyXml(params.get(DataPreparation.FILE), csv);
+			modifyXml(params.get(FILE), csv);
 			System.out.println("xml modified");
 		} catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
 			// TODO Auto-generated catch block
@@ -101,24 +100,20 @@ public class BugDataPreparation implements DataPreparation{
 		transformer.transform(source, result);
 	}
 
-	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void setConfig(Map<String, String> params) {
 		this.params = params;
 	}
 
-	@Override
 	public Map<String, String> getConfig() {
 		// TODO Auto-generated method stub
 		return this.params;

@@ -5,10 +5,5 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
     version="2.1">
-	<managed-bean>
-		<managed-bean-name>serviceBean</managed-bean-name>
-		<managed-bean-class>framesis.webclient.ServiceBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 
 </faces-config>

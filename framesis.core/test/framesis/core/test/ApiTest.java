@@ -10,6 +10,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import framesis.api.Analysis;
+import framesis.api.AnalysisInterface;
 import framesis.api.Scenario;
 import framesis.api.SubScenario;
 
@@ -40,7 +41,7 @@ public class ApiTest {
 		demo.addScenario(subDummy1);
 		demo.addScenario(subDummy2);
 		
-		Analysis analyse = initAnalysis(demo);
+		AnalysisInterface analyse = initAnalysis(demo);
 		analyse.setScenario(demo);
 
 		analyse.execute();
@@ -48,8 +49,8 @@ public class ApiTest {
 		assertNotNull(zip);
 	}
 
-	private Analysis initAnalysis(Scenario demo) {
-		Analysis analyse = new Analysis();
+	private AnalysisInterface initAnalysis(Scenario demo) {
+		AnalysisInterface analyse = new Analysis();
 		analyse.setDataSource(test.toURI().toString());
 		return analyse;
 	}

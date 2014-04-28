@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 
 import javax.ejb.Stateless;
 
-import framesis.api.DataPreparation;
 import framesis.api.SubScenario;
+import framesis.webservice.dto.ConfigElementDump;
 import framesis.webservice.dto.SubScenarioDump;
 
 @Stateless
@@ -30,26 +30,25 @@ public class Conversion {
 	public SubScenario fromSubScenarioDump(SubScenarioDump dump, SubScenario sub)
 	{
 		Map<String, String> config = new HashMap<String, String>();
-		List<String> dumpConfig = dump.getConfig();
-		for(String s : dumpConfig)
+		List<ConfigElementDump> dumpConfig = dump.getConfig();
+		for(ConfigElementDump s : dumpConfig)
 		{
-			String[] entry = s.split(":");
-			config.put(entry[0], entry[1]);
+			config.put(s.getParameter(), s.getValue());
 		}
 		sub.setConfig(config);
 		return sub;
 	}
 	
-	private List<String> fromMap(Map<String, String> config)
+	private List<ConfigElementDump> fromMap(Map<String, String> config)
 	{
 		Set<Entry<String,String>> set = config.entrySet();
 		Iterator<Entry<String,String>> iter = set.iterator();
 		
-		List<String> ret = new ArrayList<String>();
+		List<ConfigElementDump> ret = new ArrayList<ConfigElementDump>();
 		while(iter.hasNext())
 		{
 			Entry<String,String> e = iter.next();
-			ret.add(e.getKey() + ":" + e.getValue());
+			ret.add( new ConfigElementDump(e.getKey(), e.getValue()) );
 		}
 		return ret;
 	}

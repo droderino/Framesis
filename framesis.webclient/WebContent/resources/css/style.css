@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+.gridClass {
+	vertical-align: top;
+}
+
+.listbox {
+	height: 80px;
+	width: 150px;
+}
