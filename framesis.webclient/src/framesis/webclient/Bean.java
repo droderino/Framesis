@@ -3,15 +3,20 @@ package framesis.webclient;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class Bean implements Serializable {
 
     private String selected;
     private String result;
+    
+    @ManagedProperty(value="test")
+    private Test bar;
 
     public void submit() {
         System.out.println("submit");

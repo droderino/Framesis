@@ -7,14 +7,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlSelectOneListbox;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
-import javax.xml.ws.WebServiceRef;
 
 import framesis.webservice.AnalysisService;
-import framesis.webservice.AnalysisServiceInterface;
 import framesis.webservice.dto.SubScenarioDump;
 
 @ManagedBean
@@ -28,14 +26,16 @@ public class ServiceBean implements Serializable{
 
 	@EJB
 	private AnalysisService service;
+	
+	@ManagedProperty(value="#{scenarioBean}")
+	private ScenarioBean scenario;
+	
+	@ManagedProperty(value="#{subScenariosBean}")
+	private SubScenariosBean subScenarios;
 
 	private String source = "default";
 	
 	private List<SubScenarioDump> subScens;
-	private List<SubScenarioDump> subDe;
-	private List<SubScenarioDump> subPre;
-	private List<SubScenarioDump> subAn;
-	private List<SubScenarioDump> subEval;
 	
 	private SubScenarioDump selectedScen;
 	private String select;
@@ -44,11 +44,11 @@ public class ServiceBean implements Serializable{
 	public void init()
 	{
 		this.fillSubScens();
-		this.subDe = this.fillSub(subScens, SubScenarioDump.PHASE_DE);
-		this.subPre = this.fillSub(subScens, SubScenarioDump.PHASE_PRE);
-		this.subAn = this.fillSub(subScens, SubScenarioDump.PHASE_AN);
-		this.subEval = this.fillSub(subScens, SubScenarioDump.PHASE_EVAL);
 		
+		subScenarios.setSubDe(fillSub(subScens, SubScenarioDump.PHASE_DE));
+		subScenarios.setSubPre(fillSub(subScens, SubScenarioDump.PHASE_PRE));
+		subScenarios.setSubAn(fillSub(subScens, SubScenarioDump.PHASE_AN));
+		subScenarios.setSubEval(fillSub(subScens, SubScenarioDump.PHASE_EVAL));
 	}
 
 	public void fillSubScens()
@@ -80,6 +80,54 @@ public class ServiceBean implements Serializable{
 				this.selectedScen = s;
 	}
 
+	public void addSubScenario(String phase)
+	{
+		switch(phase)
+		{
+		case SubScenarioDump.PHASE_DE:
+			scenario.getSubDe().add(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_PRE:
+			scenario.getSubPre().add(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_AN:
+			scenario.getSubAn().add(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_EVAL:
+			scenario.getSubEval().add(selectedScen);
+			break;
+		}
+	}
+	
+	public void removeSubScenario(String phase)
+	{
+		switch(phase)
+		{
+		case SubScenarioDump.PHASE_DE:
+			scenario.getSubDe().remove(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_PRE:
+			scenario.getSubPre().remove(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_AN:
+			scenario.getSubAn().remove(selectedScen);
+			break;
+		case SubScenarioDump.PHASE_EVAL:
+			scenario.getSubEval().remove(selectedScen);
+			break;
+		}
+	}
+	
+	public void addDataExtraction()
+	{
+		scenario.getSubDe().add(selectedScen);
+	}
+	
+	public void removeDataExtraction()
+	{
+		scenario.getSubDe().remove(selectedScen);
+	}
+	
 	public String getSource() {
 		return source;
 	}
@@ -96,7 +144,6 @@ public class ServiceBean implements Serializable{
 		this.subScens = subScens;
 	}
 	
-
 	public SubScenarioDump getSelectedScen() {
 		return selectedScen;
 	}
@@ -113,35 +160,19 @@ public class ServiceBean implements Serializable{
 		this.select = select;
 	}
 
-	public List<SubScenarioDump> getSubDe() {
-		return subDe;
+	public ScenarioBean getScenario() {
+		return scenario;
 	}
 
-	public void setSubDe(List<SubScenarioDump> subDe) {
-		this.subDe = subDe;
+	public void setScenario(ScenarioBean scenario) {
+		this.scenario = scenario;
 	}
 
-	public List<SubScenarioDump> getSubPre() {
-		return subPre;
+	public SubScenariosBean getSubScenarios() {
+		return subScenarios;
 	}
 
-	public void setSubPre(List<SubScenarioDump> subPre) {
-		this.subPre = subPre;
-	}
-
-	public List<SubScenarioDump> getSubAn() {
-		return subAn;
-	}
-
-	public void setSubAn(List<SubScenarioDump> subAn) {
-		this.subAn = subAn;
-	}
-
-	public List<SubScenarioDump> getSubEval() {
-		return subEval;
-	}
-
-	public void setSubEval(List<SubScenarioDump> subEval) {
-		this.subEval = subEval;
+	public void setSubScenarios(SubScenariosBean subScenarios) {
+		this.subScenarios = subScenarios;
 	}
 }

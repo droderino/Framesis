@@ -8,3 +8,15 @@
 	height: 80px;
 	width: 150px;
 }
+
+.grid {
+	margin: auto;
+}
+
+.gridComposition {
+	text-align: center;
+}
+
+.configTable {
+	align: right;
+}
