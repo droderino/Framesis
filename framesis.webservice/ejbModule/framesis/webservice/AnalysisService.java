@@ -10,18 +10,12 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-import org.glassfish.osgicdi.OSGiService;
-
-import framesis.api.AnalysisInterface;
-import framesis.api.Scenario;
 import framesis.api.SubScenario;
+import framesis.webservice.ao.AnalysisAO;
 import framesis.webservice.dto.SubScenarioDump;
-import framesis.webservice.eao.AnalysisEao;
-import framesis.webservice.util.Conversion;
 
 /**
  * Session Bean implementation class Service
@@ -30,14 +24,9 @@ import framesis.webservice.util.Conversion;
 @LocalBean
 @WebService
 public class AnalysisService implements AnalysisServiceInterface {
-
-	@Inject @OSGiService(dynamic=true)
-	private AnalysisInterface analyse;
 	
 	@EJB
-	AnalysisEao eao;
-	@EJB
-	Conversion conv;
+	AnalysisAO aao;
 	
     /**
      * Default constructor. 
@@ -48,7 +37,7 @@ public class AnalysisService implements AnalysisServiceInterface {
 
 	@Override
 	public List<String> getSubScenConfig(String name) {
-		List<SubScenario> subs = eao.getSubScenarios();
+		List<SubScenario> subs = aao.getSubScenarios();
 		for(SubScenario element : subs)
 		{
 			if(element.getName().equals(name))
@@ -73,34 +62,10 @@ public class AnalysisService implements AnalysisServiceInterface {
 	public String execute(
 			@WebParam(name="SubScenarioDump") List<SubScenarioDump> list, 
 			@WebParam(name="sourceURI") String sourceURI) {
-		List<SubScenario> subs = eao.getSubScenarios();
 		
-		Scenario scen = new Scenario("dummy");
-		for(SubScenarioDump d : list)
-		{
-			SubScenario newSub = getSubScenario(d, subs);
-			scen.addScenario(newSub);
-		}
+		String ret = aao.execute(list, sourceURI);
 		
-		analyse.setScenario(scen);
-		analyse.setDataSource(sourceURI);
-		analyse.execute();
-		
-		return "success";
-	}
-	
-	private SubScenario getSubScenario(SubScenarioDump dump, List<SubScenario> list)
-	{
-		Iterator<SubScenario> iter = list.iterator();
-		while(iter.hasNext())
-		{
-			SubScenario cur = iter.next();
-			if(cur.getName().equals(dump.getName()))
-			{
-				return conv.fromSubScenarioDump(dump, cur);
-			}
-		}
-		return null;
+		return ret;
 	}
 
 	@Override
@@ -110,10 +75,7 @@ public class AnalysisService implements AnalysisServiceInterface {
 
 	@Override
 	public List<SubScenarioDump> dumpSubScenarios() {
-		List<SubScenario> subs = eao.getSubScenarios();
-		List<SubScenarioDump> dumps = new ArrayList<SubScenarioDump>();
-		for(SubScenario s : subs)
-			dumps.add(conv.fromSubScenario(s));
+		List<SubScenarioDump> dumps = aao.getSubScenarioDumps();
 		
 		return dumps;
 	}

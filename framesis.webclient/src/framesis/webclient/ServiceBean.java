@@ -12,7 +12,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlSelectOneListbox;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.apache.myfaces.custom.fileupload.UploadedFile;
+
 import framesis.webservice.AnalysisService;
+import framesis.webservice.AnalysisServiceInterface;
 import framesis.webservice.dto.SubScenarioDump;
 
 @ManagedBean
@@ -33,7 +36,8 @@ public class ServiceBean implements Serializable{
 	@ManagedProperty(value="#{subScenariosBean}")
 	private SubScenariosBean subScenarios;
 
-	private String source = "default";
+	private String source;
+	private UploadedFile uploadedFile;
 	
 	private List<SubScenarioDump> subScens;
 	
@@ -43,7 +47,7 @@ public class ServiceBean implements Serializable{
 	@PostConstruct
 	public void init()
 	{
-		this.fillSubScens();
+		this.fetchSubScenarios();
 		
 		subScenarios.setSubDe(fillSub(subScens, SubScenarioDump.PHASE_DE));
 		subScenarios.setSubPre(fillSub(subScens, SubScenarioDump.PHASE_PRE));
@@ -51,12 +55,23 @@ public class ServiceBean implements Serializable{
 		subScenarios.setSubEval(fillSub(subScens, SubScenarioDump.PHASE_EVAL));
 	}
 
-	public void fillSubScens()
+	public void fetchSubScenarios()
 	{
 		this.subScens = service.dumpSubScenarios();
 	}
 	
-	public List<SubScenarioDump> fillSub(List<SubScenarioDump> input, String phase)
+	public void executeScenario()
+	{
+		List<SubScenarioDump> execSequence = scenario.generateExecSequence();
+		service.execute(execSequence, source);
+	}
+	
+	public void deleteScenario()
+	{
+		scenario.delete();
+	}
+	
+	private List<SubScenarioDump> fillSub(List<SubScenarioDump> input, String phase)
 	{
 		List<SubScenarioDump> output = new ArrayList<SubScenarioDump>();
 		
@@ -118,16 +133,11 @@ public class ServiceBean implements Serializable{
 		}
 	}
 	
-	public void addDataExtraction()
+	public void upload()
 	{
-		scenario.getSubDe().add(selectedScen);
+		
 	}
-	
-	public void removeDataExtraction()
-	{
-		scenario.getSubDe().remove(selectedScen);
-	}
-	
+		
 	public String getSource() {
 		return source;
 	}
@@ -174,5 +184,13 @@ public class ServiceBean implements Serializable{
 
 	public void setSubScenarios(SubScenariosBean subScenarios) {
 		this.subScenarios = subScenarios;
+	}
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
 	}
 }

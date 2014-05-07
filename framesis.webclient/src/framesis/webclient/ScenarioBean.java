@@ -30,6 +30,25 @@ public class ScenarioBean {
 		this.subPre = new ArrayList<SubScenarioDump>();
 	}
 	
+	public List<SubScenarioDump> generateExecSequence()
+	{
+		sequence.addAll(subDe);
+		sequence.addAll(subPre);
+		sequence.addAll(subAn);
+		sequence.addAll(subEval);
+		
+		return sequence;
+	}
+	
+	public void delete()
+	{
+		this.sequence.clear();
+		this.subAn.clear();
+		this.subDe.clear();
+		this.subEval.clear();
+		this.subPre.clear();
+	}
+	
 	public String getSource() {
 		return source;
 	}

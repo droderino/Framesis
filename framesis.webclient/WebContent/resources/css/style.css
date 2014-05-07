@@ -2,6 +2,7 @@
 
 .gridClass {
 	vertical-align: top;
+	text-align: left;
 }
 
 .listbox {
@@ -11,6 +12,8 @@
 
 .grid {
 	margin: auto;
+	vertical-align: top;
+	text-align: center;
 }
 
 .gridComposition {

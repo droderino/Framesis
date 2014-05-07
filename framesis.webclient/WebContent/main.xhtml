@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
 
 <h:head>
 	<title>Szenrio Konfiguration</title>
@@ -23,7 +24,7 @@
 	<c:set var="PHASE_AN" value="Analysis"/>
 	<c:set var="PHASE_EVAL" value="Evaluation"/>
 
-	<h:panelGrid styleClass="grid" columns="2">
+	<h:panelGrid styleClass="grid" columns="2" border="1">
 		<h:form id="Scenario">
 			<h:panelGrid columns="3" styleClass="gridComposition">
 				<f:facet name="header">
@@ -33,7 +34,7 @@
 					<f:selectItems value="#{serviceBean.subScenarios.subDe}" var="de" itemLabel="#{de.name}" itemValue="#{de.name}"/>
 					<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
 				</h:selectOneListbox>
-				<h:panelGrid>
+				<h:panelGrid styleClass="grid">
 					<h:outputLabel value="Data Extraction" />
 					<h:commandButton value="&gt;&gt;" action="#{serviceBean.addSubScenario(PHASE_DE)}"/>
 					<h:commandButton value="&lt;&lt;" action="#{serviceBean.removeSubScenario(PHASE_DE)}"/> 
@@ -48,7 +49,7 @@
 					<f:selectItems value="#{serviceBean.subScenarios.subPre}" var="pre"	itemLabel="#{pre.name}" itemValue="#{pre.name}"/>
 					<f:ajax listener="#{serviceBean.listener}" render=":details"/>
 				</h:selectOneListbox>
-				<h:panelGrid>
+				<h:panelGrid styleClass="grid">
 					<h:outputLabel value="Preprocessing"></h:outputLabel>
 					<h:commandButton value="&gt;&gt;" action="#{serviceBean.addSubScenario(PHASE_PRE)}"/>
 					<h:commandButton value="&lt;&lt;" action="#{serviceBean.removeSubScenario(PHASE_PRE)}"/> 
@@ -63,7 +64,7 @@
 					<f:selectItems value="#{serviceBean.subScenarios.subAn}" var="an" itemLabel="#{an.name}" itemValue="#{an.name}"/>
 					<f:ajax listener="#{serviceBean.listener}" render=":details"/>
 				</h:selectOneListbox>
-				<h:panelGrid>
+				<h:panelGrid styleClass="grid">
 					<h:outputLabel value="Analysis"></h:outputLabel>
 					<h:commandButton value="&gt;&gt;" action="#{serviceBean.addSubScenario(PHASE_AN)}"/>
 					<h:commandButton value="&lt;&lt;" action="#{serviceBean.removeSubScenario(PHASE_AN)}"/> 
@@ -78,7 +79,7 @@
 					<f:selectItems value="#{serviceBean.subScenarios.subEval}" var="eval" itemLabel="#{eval.name}" itemValue="#{eval.name}"/>
 					<f:ajax listener="#{serviceBean.listener}" render=":details"/>
 				</h:selectOneListbox>
-				<h:panelGrid>
+				<h:panelGrid styleClass="grid">
 					<h:outputLabel value="Evaluation"></h:outputLabel>
 					<h:commandButton value="&gt;&gt;" action="#{serviceBean.addSubScenario(PHASE_EVAL)}"/>
 					<h:commandButton value="&lt;&lt;" action="#{serviceBean.removeSubScenario(PHASE_EVAL)}"/> 
@@ -89,6 +90,20 @@
 				</h:selectOneListbox>
 
 			</h:panelGrid>
+			
+			<h:form id="uploadForm" enctype="multipart/form-data">
+				<h:panelGrid columns="1" styleClass="grid">
+					<f:facet name="header">Eingabedaten auswählen</f:facet>
+					<t:inputFileUpload id="file" value="#{serviceBean.uploadedFile}"/>
+					<h:message for="file"/>
+					<h:commandButton value="Eingabedaten hochladen" action="#{serviceBean.upload}"/>
+					<h:message for="uploadForm" infoStyle="color: green" errorStyle="color: red"/>
+				</h:panelGrid>
+				
+			</h:form>
+			
+			<h:commandButton value="Scenario ausführen" action="#{serviceBean.executeScenario}"/>
+			<h:commandButton value="Scenario löschen" action="#{serviceBean.deleteScenario}"/>
 		</h:form>
 
 		<h:form id="details">
@@ -96,36 +111,28 @@
 				<f:facet name="header">
 					Sub-Szenario Details
 				</f:facet>
-				<h:panelGrid columns="2">
 					<h:outputLabel value="Name" />
 					<h:outputText value="#{serviceBean.selectedScen.name}" />
 
-					<h:outputLabel value="Description" />
+					<h:outputLabel value="Beschreibung" />
 					<h:outputText value="#{serviceBean.selectedScen.description}" />
 
-				</h:panelGrid>
+					<h:outputLabel value="Konfiguration" />
 
-				<h:panelGrid>
-					<f:facet name="header">
-						<h:outputLabel value="Konfiguration" />
-					</f:facet>
-
-					<h:dataTable id="configTable"
-						value="#{serviceBean.selectedScen.config}" var="o">
-						<h:column>
-							<f:facet name="header">Parameter</f:facet>
-						#{o.parameter}
-					</h:column>
-						<h:column>
-							<f:facet name="header">Value</f:facet>
-							<h:inputText value="#{o.value}"></h:inputText>
-						</h:column>
-					</h:dataTable>
-
-					<h:commandButton value="save"></h:commandButton>
-
-				</h:panelGrid>
-
+					<h:panelGrid>
+						<h:dataTable id="configTable"
+							value="#{serviceBean.selectedScen.config}" var="o">
+							<h:column>
+								<f:facet name="header">Parameter</f:facet>
+							#{o.parameter}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Value</f:facet>
+								<h:inputText value="#{o.value}"></h:inputText>
+							</h:column>
+						</h:dataTable>
+						<h:commandButton value="Änderungen speichern"/>
+					</h:panelGrid>
 			</h:panelGrid>
 		</h:form>
 	</h:panelGrid>
