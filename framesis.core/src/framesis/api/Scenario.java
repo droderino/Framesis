@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,21 +14,20 @@ public class Scenario {
 	private List<SubScenario> subScenarios;
 	private String name;
 	private FileManager fileManager;
-	private File outputDir;
 	private URI dataSource;
 	
 	public Scenario(String name)
 	{
 		this.subScenarios = new ArrayList<SubScenario>();
 		this.name = name;
-		this.outputDir = this.createTempDir(name);
-		try {
-			this.fileManager = new FileManager(this.outputDir.getAbsolutePath());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
-	
+
+	public Scenario(String name, URI source)
+	{
+		this(name);
+		this.setDataSource(dataSource);
+	}
+		
 	public void addScenario(SubScenario element)
 	{
 		this.subScenarios.add(element);
@@ -40,10 +38,10 @@ public class Scenario {
 		this.subScenarios.remove(element);
 	}
 	
-	public void execute()
+	public String execute()
 	{
 		if(dataSource == null)
-			return;
+			return null;
 		
 		URI tmpSource = dataSource;
 		Map<String, String> config;
@@ -63,6 +61,9 @@ public class Scenario {
 				e.printStackTrace();
 			}
 		}
+		File results = fileManager.exportFiles(name);
+		fileManager.deleteAll();
+		return results.getAbsolutePath();
 	}
 	
 	public List<File> getResults()
@@ -93,8 +94,27 @@ public class Scenario {
 		this.name = name;
 	}
 	
+	private String parseForBaseDir(URI uri)
+	{
+		String base = null;
+		
+		if(uri.getScheme().equalsIgnoreCase("file"))
+			base = uri.getPath();
+		
+		File tmp = new File(base);
+		if(tmp.isFile())
+			base = tmp.getParent();
+		else if(tmp.isDirectory())
+			base = tmp.getAbsolutePath();
+			
+		return base;
+	}
+	
 	private File createTempDir(String prefix)
 	{
+		if(dataSource.getScheme().equalsIgnoreCase("file"))
+			System.out.println(this.parseForBaseDir(dataSource));
+			
 		File dir = new File( System.getProperty("java.io.tmpdir") );
 		String suffix = String.valueOf(System.currentTimeMillis());
 		
@@ -110,5 +130,16 @@ public class Scenario {
 
 	public void setDataSource(URI dataSource) {
 		this.dataSource = dataSource;
+		
+		String baseDir = this.parseForBaseDir(dataSource);
+		if(baseDir == null)
+			baseDir = this.createTempDir(name).getAbsolutePath();
+		
+		try {
+			fileManager = new FileManager(baseDir);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

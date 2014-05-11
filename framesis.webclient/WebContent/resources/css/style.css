@@ -1,25 +1,49 @@
 @CHARSET "ISO-8859-1";
 
-.gridClass {
+.fontStyle {
+	font-family: sans-serif;
+	font-style: normal;
+	font-size: 14px;
+}
+
+.textStyle {
+	text-align:center;
+}
+
+.leftColumn {
+	text-align: right;
 	vertical-align: top;
+}
+
+.rightColumn {
 	text-align: left;
 }
 
 .listbox {
+	font-family: sans-serif;
+	font-style: normal;
+	font-size: 14px;
 	height: 80px;
 	width: 150px;
 }
 
 .grid {
 	margin: auto;
-	vertical-align: top;
-	text-align: center;
 }
 
-.gridComposition {
-	text-align: center;
+.gridTop {
+	vertical-align: top;
 }
 
 .configTable {
 	align: right;
+}
+
+.tableStyle {
+	width: 400px;
+	text-align: center;
+}
+
+.tableStyle td:nth-child(1) {
+	width: 25%;
 }

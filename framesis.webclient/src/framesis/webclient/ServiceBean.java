@@ -1,25 +1,44 @@
 package framesis.webclient;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.html.HtmlSelectOneListbox;
+import javax.faces.component.html.HtmlSelectOneRadio;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
-import org.apache.myfaces.custom.fileupload.UploadedFile;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 import framesis.webservice.AnalysisService;
 import framesis.webservice.AnalysisServiceInterface;
 import framesis.webservice.dto.SubScenarioDump;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ServiceBean implements Serializable{
 	
 	/**
@@ -37,12 +56,17 @@ public class ServiceBean implements Serializable{
 	private SubScenariosBean subScenarios;
 
 	private String source;
-	private UploadedFile uploadedFile;
+	private String result;
 	
 	private List<SubScenarioDump> subScens;
 	
 	private SubScenarioDump selectedScen;
 	private String select;
+
+	private UploadedFile uploadedFile;
+	private StreamedContent downloadFile;
+	
+	private int inputOption;
 	
 	@PostConstruct
 	public void init()
@@ -53,6 +77,9 @@ public class ServiceBean implements Serializable{
 		subScenarios.setSubPre(fillSub(subScens, SubScenarioDump.PHASE_PRE));
 		subScenarios.setSubAn(fillSub(subScens, SubScenarioDump.PHASE_AN));
 		subScenarios.setSubEval(fillSub(subScens, SubScenarioDump.PHASE_EVAL));
+		
+		inputOption = 0;
+		result = null;
 	}
 
 	public void fetchSubScenarios()
@@ -63,12 +90,15 @@ public class ServiceBean implements Serializable{
 	public void executeScenario()
 	{
 		List<SubScenarioDump> execSequence = scenario.generateExecSequence();
-		service.execute(execSequence, source);
+		
+		if( !source.isEmpty() && !execSequence.isEmpty() )
+			result = service.execute(execSequence, source);
 	}
 	
 	public void deleteScenario()
 	{
 		scenario.delete();
+		result = null;
 	}
 	
 	private List<SubScenarioDump> fillSub(List<SubScenarioDump> input, String phase)
@@ -76,8 +106,8 @@ public class ServiceBean implements Serializable{
 		List<SubScenarioDump> output = new ArrayList<SubScenarioDump>();
 		
 		SubScenarioDump dump = new SubScenarioDump();
-		dump.setName("Select...");
-		output.add(dump);
+		//dump.setName("Select...");
+		//output.add(dump);
 		
 		for(SubScenarioDump s : input)
 			if(s.getPhase().equals(phase))
@@ -94,22 +124,26 @@ public class ServiceBean implements Serializable{
 			if(s.getName().equals(name))
 				this.selectedScen = s;
 	}
-
+	
 	public void addSubScenario(String phase)
 	{
 		switch(phase)
 		{
 		case SubScenarioDump.PHASE_DE:
-			scenario.getSubDe().add(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_DE)
+				scenario.getSubDe().add(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_PRE:
-			scenario.getSubPre().add(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_PRE)
+				scenario.getSubPre().add(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_AN:
-			scenario.getSubAn().add(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_AN)
+				scenario.getSubAn().add(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_EVAL:
-			scenario.getSubEval().add(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_EVAL)
+				scenario.getSubEval().add(selectedScen);
 			break;
 		}
 	}
@@ -119,23 +153,48 @@ public class ServiceBean implements Serializable{
 		switch(phase)
 		{
 		case SubScenarioDump.PHASE_DE:
-			scenario.getSubDe().remove(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_DE)
+				scenario.getSubDe().remove(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_PRE:
-			scenario.getSubPre().remove(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_PRE)
+				scenario.getSubPre().remove(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_AN:
-			scenario.getSubAn().remove(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_AN)
+				scenario.getSubAn().remove(selectedScen);
 			break;
 		case SubScenarioDump.PHASE_EVAL:
-			scenario.getSubEval().remove(selectedScen);
+			if(selectedScen.getPhase() == SubScenarioDump.PHASE_EVAL)
+				scenario.getSubEval().remove(selectedScen);
 			break;
 		}
 	}
 	
-	public void upload()
+	public void fileUpload(FileUploadEvent ev) throws IOException
 	{
+		setUploadedFile(ev.getFile());
 		
+		String prefix = FilenameUtils.getBaseName(uploadedFile.getFileName());
+		String suffix = FilenameUtils.getExtension(uploadedFile.getFileName());
+		
+		Path tmpDir = Paths.get(System.getProperty("java.io.tmpdir"));
+		Path root = Files.createTempDirectory(tmpDir, "framesis");
+		
+		File file = null;
+		OutputStream stream = null;
+		
+		file = File.createTempFile(prefix, "." + suffix, root.toFile());
+		stream = new FileOutputStream(file);
+		IOUtils.copy(uploadedFile.getInputstream(), stream);
+		
+		source = file.toURI().toString();
+	}
+	
+	public void fileDownload() throws FileNotFoundException
+	{
+		InputStream input = new FileInputStream(result);
+		this.downloadFile = new DefaultStreamedContent(input, "application/zip", "ergebnisse.zip");
 	}
 		
 	public String getSource() {
@@ -192,5 +251,29 @@ public class ServiceBean implements Serializable{
 
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
+	}
+
+	public StreamedContent getDownloadFile() {
+		return downloadFile;
+	}
+
+	public void setDownloadFile(StreamedContent downloadFile) {
+		this.downloadFile = downloadFile;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public int getInputOption() {
+		return inputOption;
+	}
+
+	public void setInputOption(int inputOption) {
+		this.inputOption = inputOption;
 	}
 }

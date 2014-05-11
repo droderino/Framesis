@@ -27,7 +27,7 @@ public class AnalysisService implements AnalysisServiceInterface {
 	
 	@EJB
 	AnalysisAO aao;
-	
+
     /**
      * Default constructor. 
      */

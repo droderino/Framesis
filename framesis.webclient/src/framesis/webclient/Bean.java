@@ -8,18 +8,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
+
 @ManagedBean
 @SessionScoped
 public class Bean implements Serializable {
 
     private String selected;
     private String result;
-    
-    @ManagedProperty(value="test")
-    private Test bar;
 
     public void submit() {
-        System.out.println("submit");
     }
 
     public void listener(AjaxBehaviorEvent event) {
@@ -38,5 +35,4 @@ public class Bean implements Serializable {
     public String getResult() {
         return result;
     }
-
 }

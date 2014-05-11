@@ -56,7 +56,7 @@ public class ApiTest {
 	}
 
 	private Scenario initScenario() {
-		Scenario demo = new Scenario("test");
+		Scenario demo = new Scenario("test", test.toURI());
 		assertNotNull(demo);
 		return demo;
 	}

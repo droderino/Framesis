@@ -26,7 +26,7 @@ public class DummyScenario implements SubScenario{
 		
 		this.name = "DummyScenario";
 		this.description = "nothing";
-		this.phase = SubScenario.PHASE_EVAL;
+		this.phase = SubScenario.PHASE_AN;
 		this.result = "";
 	}
 	

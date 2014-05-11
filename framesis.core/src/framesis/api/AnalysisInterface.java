@@ -9,7 +9,7 @@ public interface AnalysisInterface {
 
 	public abstract void setDataSource(String source);
 
-	public abstract void execute();
+	public abstract String execute();
 
 	public abstract File getResults();
 

@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.glassfish.osgicdi.OSGiService;
 
+import framesis.api.Analysis;
 import framesis.api.AnalysisInterface;
 import framesis.api.Scenario;
 import framesis.api.SubScenario;
@@ -24,7 +25,8 @@ import framesis.webservice.util.Conversion;
 @LocalBean
 public class AnalysisAO {
 
-	@Inject @OSGiService(dynamic=true)
+	/*@Inject 
+	@OSGiService(dynamic=true)*/
 	private AnalysisInterface analyse;
 	
 	@EJB
@@ -55,9 +57,11 @@ public class AnalysisAO {
     
     public String execute(List<SubScenarioDump> list, String sourceURI)
     {
+    	analyse = new Analysis();
+    	
     	List<SubScenario> subs = getSubScenarios();
 		
-		Scenario scen = new Scenario("dummy");
+		Scenario scen = new Scenario("framesis");
 		for(SubScenarioDump d : list)
 		{
 			SubScenario newSub = getSubScenario(d, subs);
@@ -66,11 +70,11 @@ public class AnalysisAO {
 		
 		analyse.setScenario(scen);
 		analyse.setDataSource(sourceURI);
-		analyse.execute();
-    	return "success";
+		String ret = analyse.execute();
+    	return ret;
     }
     
-    private SubScenario getSubScenario(SubScenarioDump dump, List<SubScenario> list)
+    public SubScenario getSubScenario(SubScenarioDump dump, List<SubScenario> list)
 	{
 		Iterator<SubScenario> iter = list.iterator();
 		while(iter.hasNext())

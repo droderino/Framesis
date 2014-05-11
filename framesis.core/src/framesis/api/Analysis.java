@@ -30,10 +30,11 @@ public class Analysis implements AnalysisInterface {
 	 * @see framesis.api.AnalysisInterface#execute()
 	 */
 	@Override
-	public void execute()
+	public String execute()
 	{
 		this.scenario.setDataSource(URI.create(dataSource));
-		this.scenario.execute();
+		String resultsPath = this.scenario.execute();
+		return resultsPath;
 	}
 	
 	/* (non-Javadoc)
@@ -53,24 +54,4 @@ public class Analysis implements AnalysisInterface {
 	{
 		return URI.create(dataSource);
 	}
-	/*private TextMiningTask task;
-	
-	public void setTextMiningTask(TextMiningTask task)
-	{
-		this.task = task;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public String execute(Map<String, String> params)
-	{
-		params.put("preparatedFile", params.get(TextMiningTask.FILE));
-		return task.execute(params);
-	}
-	public String execute(Map<String, String> tmParams, DataPreparation prep, Map<String, String> dpParams)
-	{
-		String preparatedFile = prep.prepare(dpParams);
-		tmParams.put("preparatedFile", preparatedFile);
-		String processedFile = execute(tmParams);
-		return processedFile;
-	}*/
 }

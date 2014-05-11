@@ -1,7 +1,0 @@
-Private-Package: framesis.webservice.util,\
-	framesis.webservice.ao
-Export-Package: framesis.webservice.dto,\
-	framesis.webservice
-Import-Package: framesis.api,\
-	*
-Bundle-Name: Framesis Web-Service
