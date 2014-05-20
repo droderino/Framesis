@@ -1,0 +1,26 @@
+
+Correctly Classified Instances          23               23      %
+Incorrectly Classified Instances        77               77      %
+Kappa statistic                          0.0356
+Mean absolute error                      0.1192
+Root mean squared error                  0.3388
+Relative absolute error                110.2346 %
+Root relative squared error            144.0591 %
+Total Number of Instances              100     
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.367     0.196      0.643     0.367     0.468      0.586    BUG
+                 0         0.089      0         0         0          0.456    RFE
+                 0         0.167      0         0         0          0.417    IMPROVEMENT
+                 0         0          0         0         0          ?        DOCUMENTATION
+                 0         0          0         0         0          0.5      BUILD_SYSTEM
+                 0         0          0         0         0          0.5      REFACTORING
+                 0.333     0.187      0.15      0.333     0.207      0.573    CLEANUP
+                 0         0.01       0         0         0          0.495    SPEC
+                 0.2       0.189      0.053     0.2       0.083      0.505    TEST
+                 0         0          0         0         0          ?        BACKPORT
+                 0         0          0         0         0          ?        TASK
+                 0         0.01       0         0         0          ?        OTHER
+                 0.143     0.086      0.111     0.143     0.125      0.528    DESIGN_DEFECT
+Weighted Avg.    0.23      0.164      0.339     0.23      0.261      0.533

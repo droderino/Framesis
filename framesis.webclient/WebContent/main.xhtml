@@ -14,12 +14,6 @@
 <h:body>
 	<h:outputStylesheet library="css" name="style.css" />
 
-	<c:set var="deSize" value="#{serviceBean.subScenarios.subDe.size()}" />
-	<c:set var="preSize" value="#{serviceBean.subScenarios.subPre.size()}" />
-	<c:set var="anSize" value="#{serviceBean.subScenarios.subAn.size()}" />
-	<c:set var="evalSize"
-		value="#{serviceBean.subScenarios.subEval.size()}" />
-
 	<c:set var="PHASE_DE" value="Data Extraction" />
 	<c:set var="PHASE_PRE" value="Preprocessing" />
 	<c:set var="PHASE_AN" value="Analysis" />
@@ -34,8 +28,13 @@
 					<f:facet name="header">
 						Szenario Komposition
 					</f:facet>
+					
+					<h:outputText value="Verfügbare Sub-Szenarien"/>
+					<h:panelGroup/>
+					<h:outputText value="Neues Szenario"/>
+					
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.subScenarios.subDe}" var="de"
 							itemLabel="#{de.name}" itemValue="#{de.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
@@ -48,14 +47,14 @@
 							action="#{serviceBean.removeSubScenario(PHASE_DE)}" />
 					</h:panelGrid>
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.scenario.subDe}" var="scDe"
 							itemLabel="#{scDe.name}" itemValue="#{scDe.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details"></f:ajax>
 					</p:selectOneListbox>
 
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.subScenarios.subPre}"
 							var="pre" itemLabel="#{pre.name}" itemValue="#{pre.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details" />
@@ -68,14 +67,14 @@
 							action="#{serviceBean.removeSubScenario(PHASE_PRE)}" />
 					</h:panelGrid>
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.scenario.subPre}" var="scPre"
 							itemLabel="#{scPre.name}" itemValue="#{scPre.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details" />
 					</p:selectOneListbox>
 
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.subScenarios.subAn}" var="an"
 							itemLabel="#{an.name}" itemValue="#{an.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details" />
@@ -88,14 +87,14 @@
 							action="#{serviceBean.removeSubScenario(PHASE_AN)}" />
 					</h:panelGrid>
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.scenario.subAn}" var="scAn"
 							itemLabel="#{scAn.name}" itemValue="#{scAn.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details" />
 					</p:selectOneListbox>
 
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.subScenarios.subEval}"
 							var="eval" itemLabel="#{eval.name}" itemValue="#{eval.name}" />
 						<f:ajax listener="#{serviceBean.listener}" render=":details" />
@@ -108,7 +107,7 @@
 							action="#{serviceBean.removeSubScenario(PHASE_EVAL)}" />
 					</h:panelGrid>
 					<p:selectOneListbox value="#{serviceBean.select}"
-						styleClass="listbox">
+						styleClass="listbox" scrollHeight="100">
 						<f:selectItems value="#{serviceBean.scenario.subEval}"
 							var="scEval" itemLabel="#{scEval.name}"
 							itemValue="#{scEval.name}" />
@@ -121,7 +120,7 @@
 			<h:panelGrid styleClass="grid" columnClasses="textStyle">
 				<f:facet name="header">Eingabedaten auswählen</f:facet>
 				<h:form id="uploadOption" styleClass="textStyle">
-					<h:selectOneRadio value="#{serviceBean.inputOption}" styleClass="textStyle">
+					<h:selectOneRadio value="#{serviceBean.inputOption}" styleClass="grid">
 						<f:selectItem itemLabel="Datei-Upload" itemValue="0" />
 						<f:selectItem itemLabel="URI" itemValue="1" />
 						<f:ajax event="valueChange" render=":uploadForm" />
@@ -158,9 +157,12 @@
 				</f:facet>
 				<h:outputLabel value="Name" />
 				<h:outputText value="#{serviceBean.selectedScen.name}" />
+				
+				<h:outputLabel value="Phase"/>
+				<h:outputText value="#{serviceBean.selectedScen.phase}"/>
 
 				<h:outputLabel value="Beschreibung" />
-				<h:outputText value="#{serviceBean.selectedScen.description}" />
+				<p:inputTextarea value="#{serviceBean.selectedScen.description}" styleClass="inputTextArea fontStyle" readonly="true" rows="3" />
 
 				<h:outputLabel value="Konfiguration" />
 

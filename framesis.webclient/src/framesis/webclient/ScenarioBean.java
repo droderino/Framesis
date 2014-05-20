@@ -33,12 +33,13 @@ public class ScenarioBean {
 	
 	public List<SubScenarioDump> generateExecSequence()
 	{
-		sequence.addAll(subDe);
-		sequence.addAll(subPre);
-		sequence.addAll(subAn);
-		sequence.addAll(subEval);
+		List<SubScenarioDump> exec = new ArrayList<SubScenarioDump>();
+		exec.addAll(subDe);
+		exec.addAll(subPre);
+		exec.addAll(subAn);
+		exec.addAll(subEval);
 		
-		return sequence;
+		return exec;
 	}
 	
 	public void delete()

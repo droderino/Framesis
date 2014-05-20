@@ -8,6 +8,18 @@
 
 .textStyle {
 	text-align:center;
+	padding: auto;
+}
+
+.output {
+	width: 300px;
+	word-wrap: break-word;
+}
+
+.inputTextArea {
+	overflow: hidden;
+	border: none;
+	width: 400px;
 }
 
 .leftColumn {
@@ -23,8 +35,16 @@
 	font-family: sans-serif;
 	font-style: normal;
 	font-size: 14px;
-	height: 80px;
-	width: 150px;
+	margin: auto;
+	height: 100px;
+	width: 200px;
+}
+
+.listbox2 {
+	font-family: sans-serif;
+	font-style: normal;
+	font-size: 14px;
+	width: 200px;
 }
 
 .grid {

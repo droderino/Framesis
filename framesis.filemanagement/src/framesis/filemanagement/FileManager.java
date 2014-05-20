@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -25,7 +26,7 @@ public class FileManager {
 		if( !basePath.toFile().exists() )
 			basePath = Paths.get(System.getProperty("java.io.tmpdir"));
 		
-		this.rootPath = Files.createTempDirectory(basePath, "framesisTmp");
+		this.rootPath = basePath;//Files.createTempDirectory(basePath, "framesisTmp");
 		files = new ArrayList<File>();
 	}
 	
@@ -44,10 +45,13 @@ public class FileManager {
 	
 	public void deleteAll()
 	{
-		for(File f : files)
+		Iterator<File> iter = files.iterator();
+		while(iter.hasNext())
 		{
-			files.remove(f);
-			f.delete();
+			File element = iter.next();
+			files.remove(element);
+			element.delete();
+			iter = files.iterator();
 		}
 	}
 	

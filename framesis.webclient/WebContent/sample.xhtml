@@ -3,21 +3,18 @@
     xmlns:h="http://java.sun.com/jsf/html" 
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui"
 >
     <h:head>
         <title>SO question 6089924</title>
     </h:head>
     <h:body>
-        <h:form id="upload" enctype="multipart/form-data">
-				<h:panelGrid columns="1" styleClass="grid">
-					<f:facet name="header">Eingabedaten auswaehlen</f:facet>
-					<t:inputFileUpload id="file" value="#{bean.file}"
-						required="true" />
-					<h:message for="file" />
-					<h:commandButton value="Eingabedaten hochladen"
-						action="#{bean.submit}" />
-				</h:panelGrid>
-			</h:form>
+	<h:outputStylesheet library="css" name="style.css" />
+        <h:form id="upload">
+			<p:selectOneListbox value="#{serviceBean.select}" styleClass="listbox2" scrollHeight="50">
+			<f:selectItems value="#{serviceBean.subScens}" var="scDe"
+							itemLabel="#{scDe.name}" itemValue="#{scDe.name}" />
+			</p:selectOneListbox>
+		</h:form>
     </h:body>
 </html>

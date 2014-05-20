@@ -61,7 +61,7 @@ public class Scenario {
 				e.printStackTrace();
 			}
 		}
-		File results = fileManager.exportFiles(name);
+		File results = exportResults();
 		fileManager.deleteAll();
 		return results.getAbsolutePath();
 	}
