@@ -8,6 +8,7 @@ import weka.classifiers.bayes.NaiveBayes;
 
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
+import framesis.weka.SubScenario.ClassifierExecution;
 
 public class NaiveBayesScenario implements SubScenario{
 
@@ -19,7 +20,8 @@ public class NaiveBayesScenario implements SubScenario{
 	{
 		name = "AN-WEKA-NAIVE-BAYES";
 		phase = PHASE_AN;
-		desc = "Anwendung des Naive Bayes Algorithmus auf eine Datenmenge.";
+		desc = "Anwendung des Naive Bayes Algorithmus auf eine Datenmenge. " +
+				"Falls \"Distribution = true\": Berechnung der Wahrscheinlichkeit der Klassenzuordnung der Testdaten";
 		results = "";
 		
 		this.config = new HashMap<String, String>();
@@ -27,6 +29,7 @@ public class NaiveBayesScenario implements SubScenario{
 		config.put(WekaParams.CLASSATTRIBUTE, "");
 		config.put(WekaParams.CLASSINDEX, "");
 		config.put(WekaParams.TRAINDATA, "");
+		config.put(WekaParams.CLASSIFIERMODUS, "");
 		config.put("-D", "");
 		config.put("-K", "");
 		config.put("-O", "");
@@ -36,7 +39,11 @@ public class NaiveBayesScenario implements SubScenario{
 	public URI execute() {
 		ClassifierExecution exec = new ClassifierExecution();
 		exec.setClassifier(new NaiveBayes(), config);
-		results = exec.execute();
+		
+		if(Boolean.parseBoolean(config.get(WekaParams.CLASSIFIERMODUS)))
+			results = exec.distribution();
+		else
+			results = exec.execute();
 
 		return null;
 	}

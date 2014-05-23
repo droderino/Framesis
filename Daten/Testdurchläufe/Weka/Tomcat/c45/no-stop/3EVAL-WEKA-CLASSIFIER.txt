@@ -1,0 +1,42 @@
+
+Correctly Classified Instances          48               48      %
+Incorrectly Classified Instances        52               52      %
+Kappa statistic                          0.1041
+Mean absolute error                      0.0868
+Root mean squared error                  0.2602
+Relative absolute error                 93.001  %
+Root relative squared error            115.7602 %
+Total Number of Instances              100     
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.75      0.636      0.6       0.75      0.667      0.504    BUG
+                 0.1       0.067      0.143     0.1       0.118      0.603    RFE
+                 0         0.045      0         0         0          0.387    IMPROVEMENT
+                 0.357     0.047      0.556     0.357     0.435      0.663    DOCUMENTATION
+                 0         0.02       0         0         0          ?        BUILD_SYSTEM
+                 0         0          0         0         0          ?        REFACTORING
+                 0         0          0         0         0          0.49     CLEANUP
+                 0         0          0         0         0          ?        SPEC
+                 0         0          0         0         0          0.5      TEST
+                 0         0          0         0         0          ?        BACKPORT
+                 0         0          0         0         0          ?        TASK
+                 0         0.083      0         0         0          0.447    OTHER
+                 0         0          0         0         0          0.5      DESIGN_DEFECT
+Weighted Avg.    0.48      0.378      0.428     0.48      0.446      0.52 
+=== Confusion Matrix ===
+
+  a  b  c  d  e  f  g  h  i  j  k  l  m   <-- classified as
+ 42  4  2  2  1  0  0  0  0  0  0  5  0 |  a = BUG
+  6  1  2  1  0  0  0  0  0  0  0  0  0 |  b = RFE
+  9  1  0  0  1  0  0  0  0  0  0  1  0 |  c = IMPROVEMENT
+  9  0  0  5  0  0  0  0  0  0  0  0  0 |  d = DOCUMENTATION
+  0  0  0  0  0  0  0  0  0  0  0  0  0 |  e = BUILD_SYSTEM
+  0  0  0  0  0  0  0  0  0  0  0  0  0 |  f = REFACTORING
+  0  0  0  0  0  0  0  0  0  0  0  1  0 |  g = CLEANUP
+  0  0  0  0  0  0  0  0  0  0  0  0  0 |  h = SPEC
+  1  0  0  0  0  0  0  0  0  0  0  0  0 |  i = TEST
+  0  0  0  0  0  0  0  0  0  0  0  0  0 |  j = BACKPORT
+  0  0  0  0  0  0  0  0  0  0  0  0  0 |  k = TASK
+  2  1  0  1  0  0  0  0  0  0  0  0  0 |  l = OTHER
+  1  0  0  0  0  0  0  0  0  0  0  1  0 |  m = DESIGN_DEFECT

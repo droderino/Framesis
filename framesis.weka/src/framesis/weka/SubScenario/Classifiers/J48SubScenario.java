@@ -7,6 +7,7 @@ import java.util.Map;
 import weka.classifiers.trees.J48;
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
+import framesis.weka.SubScenario.ClassifierExecution;
 
 public class J48SubScenario implements SubScenario{
 
@@ -18,7 +19,8 @@ public class J48SubScenario implements SubScenario{
 	{
 		name = "AN-WEKA-C4.5";
 		phase = PHASE_AN;
-		desc = "Anwendung des C4.5 Tree Algorithmus auf eine Datenmenge.";
+		desc = "Anwendung des C4.5 Tree Algorithmus auf eine Datenmenge." +
+				"Falls \"Distribution = true\": Berechnung der Wahrscheinlichkeit der Klassenzuordnung der Testdaten";
 		results = "";
 		
 		this.config = new HashMap<String, String>();
@@ -26,6 +28,7 @@ public class J48SubScenario implements SubScenario{
 		config.put(WekaParams.CLASSATTRIBUTE, "");
 		config.put(WekaParams.CLASSINDEX, "");
 		config.put(WekaParams.TRAINDATA, "");
+		config.put(WekaParams.CLASSIFIERMODUS, "");
 		config.put("-U", "");
 		config.put("-C", "");
 		config.put("-M", "");
@@ -42,7 +45,11 @@ public class J48SubScenario implements SubScenario{
 	public URI execute() {
 		ClassifierExecution exec = new ClassifierExecution();
 		exec.setClassifier(new J48(), config);
-		results = exec.execute();
+		
+		if(Boolean.parseBoolean(config.get(WekaParams.CLASSIFIERMODUS)))
+			results = exec.distribution();
+		else
+			results = exec.execute();
 
 		return null;
 	}

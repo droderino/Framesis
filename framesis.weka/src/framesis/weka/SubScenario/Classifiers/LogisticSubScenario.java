@@ -7,6 +7,7 @@ import java.util.Map;
 import weka.classifiers.functions.Logistic;
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
+import framesis.weka.SubScenario.ClassifierExecution;
 
 public class LogisticSubScenario implements SubScenario{
 
@@ -18,7 +19,8 @@ public class LogisticSubScenario implements SubScenario{
 	{
 		name = "AN-WEKA-Logistic";
 		phase = PHASE_AN;
-		desc = "Anwendung des Logistic Regression Algorithmus auf eine Datenmenge.";
+		desc = "Anwendung des Logistic Regression Algorithmus auf eine Datenmenge." +
+				"Falls \"Distribution = true\": Berechnung der Wahrscheinlichkeit der Klassenzuordnung der Testdaten";
 		results = "";
 		
 		this.config = new HashMap<String, String>();
@@ -26,13 +28,18 @@ public class LogisticSubScenario implements SubScenario{
 		config.put(WekaParams.CLASSATTRIBUTE, "");
 		config.put(WekaParams.CLASSINDEX, "");
 		config.put(WekaParams.TRAINDATA, "");
+		config.put(WekaParams.CLASSIFIERMODUS, "");
 	}
 	
 	@Override
 	public URI execute() {
 		ClassifierExecution exec = new ClassifierExecution();
 		exec.setClassifier(new Logistic(), config);
-		results = exec.execute();
+		
+		if(Boolean.parseBoolean(config.get(WekaParams.CLASSIFIERMODUS)))
+			results = exec.distribution();
+		else
+			results = exec.execute();
 
 		return null;
 	}

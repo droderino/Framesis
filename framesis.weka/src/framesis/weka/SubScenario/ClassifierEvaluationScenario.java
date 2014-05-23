@@ -10,6 +10,8 @@ import weka.classifiers.Evaluation;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 import weka.core.converters.ConverterUtils.DataSource;
+import weka.filters.Filter;
+import weka.filters.unsupervised.instance.RemovePercentage;
 
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
@@ -46,7 +48,7 @@ public class ClassifierEvaluationScenario implements SubScenario{
 			Evaluation eval = new Evaluation(train);
 			eval.evaluateModel(cls, test);
 			
-			results = eval.toSummaryString() + eval.toClassDetailsString();
+			results = eval.toSummaryString() + eval.toClassDetailsString() + eval.toMatrixString();
 			
 			deleteFile(source.getParent() + "/classifier.model");
 			deleteFile(source.getParent() + "/backup.arff");
@@ -71,8 +73,17 @@ public class ClassifierEvaluationScenario implements SubScenario{
 		else
 			trainSize = (int)Math.round(data.numInstances() * 0.8);
 		
-		int testSize = data.numInstances() - trainSize;
+		/*RemovePercentage rp = new RemovePercentage();
+		String[] o = {"-P", "20"};
+		rp.setOptions(o);
+		rp.setInputFormat(data);
+		train = Filter.useFilter(data, rp);
 		
+		String[] o2 = {"-P", "20", "-V"};
+		rp.setOptions(o2);
+		test = Filter.useFilter(data, rp);*/
+		
+		int testSize = data.numInstances() - trainSize;
 		train = new Instances(data, 0, trainSize);
 		test = new Instances(data, trainSize, testSize);
 		

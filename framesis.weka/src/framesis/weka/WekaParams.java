@@ -8,4 +8,5 @@ public interface WekaParams {
 	public static final String EVALUATIONRESULTS = "evaluationResults";
 	public static final String TRAINDATA = "trainPercentage";
 	public static final String SAVECLASSIFIER = "-d";
+	public static final String CLASSIFIERMODUS = "Distribution";
 }

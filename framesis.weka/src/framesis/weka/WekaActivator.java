@@ -15,6 +15,7 @@ import framesis.weka.SubScenario.Classifiers.LogisticSubScenario;
 import framesis.weka.SubScenario.Classifiers.NaiveBayesScenario;
 import framesis.weka.SubScenario.Classifiers.SMOSubScenario;
 import framesis.weka.SubScenario.Classifiers.ZeroRSubScenario;
+import framesis.weka.SubScenario.Distribution.NaiveBayesDistribution;
 
 public class WekaActivator implements BundleActivator{
 

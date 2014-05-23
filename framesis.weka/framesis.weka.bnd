@@ -2,6 +2,7 @@ Private-Package: framesis.weka
 Bundle-Activator: framesis.weka.WekaActivator
 Export-Package: framesis.weka.DataPreparations,\
 	framesis.weka.SubScenario,\
-	framesis.weka.SubScenario.Classifiers
+	framesis.weka.SubScenario.Classifiers,\
+	framesis.weka.SubScenario.Distribution
 Import-Package: framesis.api,\
 	*

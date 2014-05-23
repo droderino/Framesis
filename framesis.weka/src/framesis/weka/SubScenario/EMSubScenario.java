@@ -18,7 +18,6 @@ import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
-import framesis.weka.SubScenario.Classifiers.ClassifierExecution;
 
 public class EMSubScenario implements SubScenario{
 

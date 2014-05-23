@@ -7,6 +7,7 @@ import java.util.Map;
 import weka.classifiers.functions.SMO;
 import framesis.api.SubScenario;
 import framesis.weka.WekaParams;
+import framesis.weka.SubScenario.ClassifierExecution;
 
 public class SMOSubScenario implements SubScenario{
 
@@ -18,7 +19,8 @@ public class SMOSubScenario implements SubScenario{
 	{
 		name = "AN-WEKA-SMO";
 		phase = PHASE_AN;
-		desc = "Anwendung des Weka SMO Algorithmus (Support Vector Classifier) auf eine Datenmenge.";
+		desc = "Anwendung des Weka SMO Algorithmus (Support Vector Classifier) auf eine Datenmenge." +
+				"Falls \"Distribution = true\": Berechnung der Wahrscheinlichkeit der Klassenzuordnung der Testdaten";
 		results = "";
 		
 		this.config = new HashMap<String, String>();
@@ -26,6 +28,7 @@ public class SMOSubScenario implements SubScenario{
 		config.put(WekaParams.CLASSATTRIBUTE, "");
 		config.put(WekaParams.CLASSINDEX, "");
 		config.put(WekaParams.TRAINDATA, "");
+		config.put(WekaParams.CLASSIFIERMODUS, "");
 		config.put("-D", "");
 		config.put("-no-checks", "");
 		config.put("-C", "");
@@ -42,7 +45,11 @@ public class SMOSubScenario implements SubScenario{
 	public URI execute() {
 		ClassifierExecution exec = new ClassifierExecution();
 		exec.setClassifier(new SMO(), config);
-		results = exec.execute();
+		
+		if(Boolean.parseBoolean(config.get(WekaParams.CLASSIFIERMODUS)))
+			results = exec.distribution();
+		else
+			results = exec.execute();
 
 		return null;
 	}
