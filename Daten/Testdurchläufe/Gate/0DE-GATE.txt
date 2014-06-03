@@ -1,0 +1,612 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<GateDocument version="2">
+<!-- The document's features-->
+
+<GateDocumentFeatures>
+<Feature>
+  <Name className="java.lang.String">gate.SourceURL</Name>
+  <Value className="java.lang.String">file:/C:/Users/Andreas/AppData/Local/Temp/framesis2752586285560599367/tomcat-2-bugs2124103593376797031.xml</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">MimeType</Name>
+  <Value className="java.lang.String">text/xml</Value>
+</Feature>
+</GateDocumentFeatures>
+<!-- The document content area with serialized nodes -->
+
+<TextWithNodes><Node id="0"/>
+
+    <Node id="6"/>
+          <Node id="17"/>372<Node id="20"/>
+          
+          <Node id="42"/>2000-12-22 23:19:00 +0000<Node id="67"/>
+          <Node id="78"/>examples/ShowSource always reports "Invalid JSP file" due to logic error in ShowSource.java BugRat Report#661<Node id="187"/>
+          <Node id="198"/>2007-02-24 02:17:36 +0000<Node id="223"/>
+          <Node id="234"/>1<Node id="235"/>
+          <Node id="246"/>1<Node id="247"/>
+          <Node id="258"/>1<Node id="259"/>
+          <Node id="270"/>Unclassified<Node id="282"/>
+          <Node id="293"/>Tomcat 5<Node id="301"/>
+          <Node id="312"/>Jasper<Node id="318"/>
+          <Node id="329"/>Unknown<Node id="336"/>
+          <Node id="347"/>PC<Node id="349"/>
+          <Node id="360"/>FreeBSD<Node id="367"/>
+          <Node id="378"/>RESOLVED<Node id="386"/>
+          <Node id="397"/>FIXED<Node id="402"/>
+          
+          
+          <Node id="435"/>
+          <Node id="446"/>
+          <Node id="457"/>
+          <Node id="468"/>P1<Node id="470"/>
+          <Node id="481"/>normal<Node id="487"/>
+          <Node id="498"/>---<Node id="501"/>
+          
+          
+          <Node id="534"/>0<Node id="535"/>
+          <Node id="546"/>tony_robertson<Node id="560"/>
+          <Node id="571"/>dev<Node id="574"/>
+          
+          <Node id="596"/>0<Node id="597"/>
+
+      
+
+      
+
+      
+
+          <Node id="633"/>oldest_to_newest<Node id="649"/>  
+          <Node id="662"/>
+    <Node id="667"/>347<Node id="670"/>
+    <Node id="675"/>0<Node id="676"/>
+    <Node id="681"/>dev<Node id="684"/>
+    <Node id="689"/>2000-12-22 23:19:25 +0000<Node id="714"/>
+    <Node id="719"/>Within the source for the ShowSource tab from the examples
+context, ie. the file installed at:
+$(TOMCAT_HOME)\webapps\examples\WEB-INF\classes\examples\ShowSource.java,
+lines 23 to 26 look like this:
+
+if ((jspFile.indexOf( ".." ) >= 0) ||
+  (jspFile.toUpperCase().indexOf("/WEB-INF/") != 0) ||
+  (jspFile.toUpperCase().indexOf("/META-INF/") != 0))
+  throw new JspTagException("Invalid JSP file " + jspFile);
+
+lines 24 and 25 should use "!= -1" rather than "!= 0"
+
+This effects the "show source" links of all the
+jsp examples that use the "ShowSource" tag.
+
+<Node id="1276"/>
+  <Node id="1279"/>
+    <Node id="1284"/>2989<Node id="1288"/>
+    <Node id="1293"/>1<Node id="1294"/>
+    <Node id="1299"/>marc.saegesser<Node id="1313"/>
+    <Node id="1318"/>2001-06-14 08:26:25 +0000<Node id="1343"/>
+    <Node id="1348"/>Fixed in 3.2.3-dev and 3.3<Node id="1374"/>
+  <Node id="1377"/>
+    <Node id="1382"/>99738<Node id="1387"/>
+    <Node id="1392"/>2<Node id="1393"/>
+    <Node id="1398"/>sachinxman<Node id="1408"/>
+    <Node id="1413"/>2007-02-24 02:17:36 +0000<Node id="1438"/>
+    <Node id="1443"/>Have you fixed the problem ??
+sachinxman@gmail.com<Node id="1493"/>
+  <Node id="1496"/>
+      
+      
+
+    <Node id="1516"/>BUG<Node id="1519"/>
+    <Node id="1524"/>
+          <Node id="1535"/>2500<Node id="1539"/>
+          
+          <Node id="1561"/>2001-07-08 10:08:00 +0000<Node id="1586"/>
+          <Node id="1597"/>FileNotFoundException from service() unintentionally caught<Node id="1656"/>
+          <Node id="1667"/>2007-08-04 11:19:18 +0000<Node id="1692"/>
+          <Node id="1703"/>1<Node id="1704"/>
+          <Node id="1715"/>1<Node id="1716"/>
+          <Node id="1727"/>1<Node id="1728"/>
+          <Node id="1739"/>Unclassified<Node id="1751"/>
+          <Node id="1762"/>Tomcat 5<Node id="1770"/>
+          <Node id="1781"/>Jasper<Node id="1787"/>
+          <Node id="1798"/>Nightly Build<Node id="1811"/>
+          <Node id="1822"/>All<Node id="1825"/>
+          <Node id="1836"/>All<Node id="1839"/>
+          <Node id="1850"/>RESOLVED<Node id="1858"/>
+          <Node id="1869"/>FIXED<Node id="1874"/>
+          
+          
+          <Node id="1907"/>
+          <Node id="1918"/>
+          <Node id="1929"/>
+          <Node id="1940"/>P3<Node id="1942"/>
+          <Node id="1953"/>minor<Node id="1958"/>
+          <Node id="1969"/>---<Node id="1972"/>
+          
+          
+          <Node id="2005"/>1<Node id="2006"/>
+          <Node id="2017"/>bayern<Node id="2023"/>
+          <Node id="2034"/>dev<Node id="2037"/>
+          
+          <Node id="2059"/>0<Node id="2060"/>
+
+      
+
+      
+
+      
+
+          <Node id="2096"/>oldest_to_newest<Node id="2112"/>  
+          <Node id="2125"/>
+    <Node id="2130"/>3496<Node id="2134"/>
+    <Node id="2139"/>0<Node id="2140"/>
+    <Node id="2145"/>bayern<Node id="2151"/>
+    <Node id="2156"/>2001-07-08 10:08:25 +0000<Node id="2181"/>
+    <Node id="2186"/>In the service() method of org.apache.jasper.servlet.JspServlet, I believe the 
+scope for which the 'catch FileNotFoundException' block applies is too great;
+if a FileNotFoundException is thrown from within the JSP page, the result is
+an HTTP 404 error.  The calling code believes the JSP resource itself wasn't
+found, when in fact the exception should be treated as internal to the page.
+(You can test with
+
+   &lt;% if (1==1) throw new java.io.FileNotFoundException(); %>
+
+I noticed this problem when debugging the code of a colleague, Shawn Douglas,
+whose component logic called by the JSP page threw a FileNotFoundException.)
+
+The offending code seems to be:
+
+           try {
+                loadIfNecessary(request, response);
+
+                // If a page is to only to be precompiled return.
+                if (precompile)
+                    return;
+
+                if (theServlet instanceof SingleThreadModel) {
+                    // sync on the wrapper so that the freshness
+                    // of the page is determined right before servicing
+                    synchronized (this) {
+                        theServlet.service(request, response);
+                    }
+                } else {
+                    theServlet.service(request, response);
+                }
+
+            } catch (FileNotFoundException ex) {
+
+                    ...
+
+but I haven't had the time to look at it thoroughly.  I believe this affects 
+Tomcat 3.x as well.  The necessary fix should just be to narrow the scope
+of the 'catch' block, but I haven't had a chance to think that through 
+completely or test it.  (Sorry! :-) )<Node id="3810"/>
+  <Node id="3813"/>
+    <Node id="3818"/>3605<Node id="3822"/>
+    <Node id="3827"/>1<Node id="3828"/>
+    <Node id="3833"/>craig.mcclanahan<Node id="3849"/>
+    <Node id="3854"/>2001-07-10 17:48:14 +0000<Node id="3879"/>
+    <Node id="3884"/>It seems to me that Jasper is doing the right thing -- if the application wants
+to use FileNotFoundException internal to a page, it should swallow that
+exception instead of allowing it to propogate back to the container.
+
+Maybe there should be some spec-based description of how exceptions thrown by
+JSP page components should be handled?
+<Node id="4223"/>
+  <Node id="4226"/>
+    <Node id="4231"/>3699<Node id="4235"/>
+    <Node id="4240"/>2<Node id="4241"/>
+    <Node id="4246"/>craig.mcclanahan<Node id="4262"/>
+    <Node id="4267"/>2001-07-12 18:23:51 +0000<Node id="4292"/>
+    <Node id="4297"/>Changing to an "enhancement" request since this is a non-spec issue.
+<Node id="4366"/>
+  <Node id="4369"/>
+    <Node id="4374"/>35199<Node id="4379"/>
+    <Node id="4384"/>3<Node id="4385"/>
+    <Node id="4390"/>remm<Node id="4394"/>
+    <Node id="4399"/>2003-04-15 15:28:44 +0000<Node id="4424"/>
+    <Node id="4429"/>At this point, this will not be fixed (if still present in Jasper 2).<Node id="4498"/>
+  <Node id="4501"/>
+    <Node id="4506"/>100103<Node id="4512"/>
+    <Node id="4517"/>4<Node id="4518"/>
+    <Node id="4523"/>jleech<Node id="4529"/>
+    <Node id="4534"/>2007-03-06 13:27:01 +0000<Node id="4559"/>
+    <Node id="4564"/><![CDATA[I disagree with Remy and Craig, and I think if you polled 10 developers, 11 of
+them would call this a bug.
+
+The specification pretty clearly lays out what is to happen when a .jsp page
+throws an Exception:
+
+public abstract void handlePageException(java.lang.Throwable t)
+This method is intended to process an unhandled ’page’ level exception by
+forwarding the exception to the specified error page for this JSP. If forwarding
+is not possible (for example because the response has already been committed),
+an implementation dependent mechanism should be used to invoke
+the error page (e.g. “including�? the error page instead).
+If no error page is defined in the page, the exception should be rethrown so
+that the standard servlet error handling takes over.
+
+In this case, if I specifically define an error page for the .jsp, it is
+invoked, and the 404 error is not reported - Hurray!
+
+However, contrary to the spec, if an error page isn't defined, the standard
+servlet error handling doesn't take over.  For example, defining the following
+in web.xml, according to the servlet spec, dictates that the given error page
+should be invoked when a FileNotFoundException is thrown:
+<error-page>
+   <exception-type>java.io.FileNotFoundException</exception-type>
+   <location>/error.jsp</location>
+</error-page>
+
+As the above doesn't happen, and a 404 error is displayed instead, this behavior
+violates the spec and is a bug.  I am reopening it.  As it is still broken in
+Tomcat5, I am putting that for the Product field.  As it is not an enhancement
+but a bug, I am changing the Severity to 'minor'.]]><Node id="6163"/>
+  <Node id="6166"/>
+    <Node id="6171"/>106337<Node id="6177"/>
+    <Node id="6182"/>5<Node id="6183"/>
+    <Node id="6188"/>markt<Node id="6193"/>
+    <Node id="6198"/>2007-08-04 11:19:18 +0000<Node id="6223"/>
+    <Node id="6228"/>This is now fixed in svn for 5.5.x and 6.0.x and will be included in the next
+releases of each.<Node id="6323"/>
+  <Node id="6326"/>
+      
+      
+
+    <Node id="6346"/>BUG<Node id="6349"/>
+<Node id="6350"/></TextWithNodes>
+<!-- The default annotation set -->
+
+<AnnotationSet>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="Original markups">
+<Annotation Id="0" Type="bugzilla" StartNode="0" EndNode="6350">
+<Feature>
+  <Name className="java.lang.String">urlbase</Name>
+  <Value className="java.lang.String">https://issues.apache.org/bugzilla/</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">maintainer</Name>
+  <Value className="java.lang.String">bugzilla-admin@apache.org</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">version</Name>
+  <Value className="java.lang.String">4.4.2</Value>
+</Feature>
+</Annotation>
+<Annotation Id="1" Type="bug" StartNode="6" EndNode="1519">
+</Annotation>
+<Annotation Id="2" Type="bug_id" StartNode="17" EndNode="20">
+</Annotation>
+<Annotation Id="3" Type="creation_ts" StartNode="42" EndNode="67">
+</Annotation>
+<Annotation Id="4" Type="short_desc" StartNode="78" EndNode="187">
+</Annotation>
+<Annotation Id="5" Type="delta_ts" StartNode="198" EndNode="223">
+</Annotation>
+<Annotation Id="6" Type="reporter_accessible" StartNode="234" EndNode="235">
+</Annotation>
+<Annotation Id="7" Type="cclist_accessible" StartNode="246" EndNode="247">
+</Annotation>
+<Annotation Id="8" Type="classification_id" StartNode="258" EndNode="259">
+</Annotation>
+<Annotation Id="9" Type="classification" StartNode="270" EndNode="282">
+</Annotation>
+<Annotation Id="10" Type="product" StartNode="293" EndNode="301">
+</Annotation>
+<Annotation Id="11" Type="component" StartNode="312" EndNode="318">
+</Annotation>
+<Annotation Id="12" Type="version" StartNode="329" EndNode="336">
+</Annotation>
+<Annotation Id="13" Type="rep_platform" StartNode="347" EndNode="349">
+</Annotation>
+<Annotation Id="14" Type="op_sys" StartNode="360" EndNode="367">
+</Annotation>
+<Annotation Id="15" Type="bug_status" StartNode="378" EndNode="386">
+</Annotation>
+<Annotation Id="17" Type="bug_file_loc" StartNode="435" EndNode="435">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="16" Type="resolution" StartNode="397" EndNode="402">
+</Annotation>
+<Annotation Id="19" Type="keywords" StartNode="457" EndNode="457">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="18" Type="status_whiteboard" StartNode="446" EndNode="446">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="21" Type="bug_severity" StartNode="481" EndNode="487">
+</Annotation>
+<Annotation Id="20" Type="priority" StartNode="468" EndNode="470">
+</Annotation>
+<Annotation Id="23" Type="everconfirmed" StartNode="534" EndNode="535">
+</Annotation>
+<Annotation Id="22" Type="target_milestone" StartNode="498" EndNode="501">
+</Annotation>
+<Annotation Id="25" Type="assigned_to" StartNode="571" EndNode="574">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
+</Feature>
+</Annotation>
+<Annotation Id="24" Type="reporter" StartNode="546" EndNode="560">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Tony Robertson</Value>
+</Feature>
+</Annotation>
+<Annotation Id="27" Type="comment_sort_order" StartNode="633" EndNode="649">
+</Annotation>
+<Annotation Id="26" Type="votes" StartNode="596" EndNode="597">
+</Annotation>
+<Annotation Id="29" Type="commentid" StartNode="667" EndNode="670">
+</Annotation>
+<Annotation Id="28" Type="long_desc" StartNode="662" EndNode="1279">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="31" Type="who" StartNode="681" EndNode="684">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
+</Feature>
+</Annotation>
+<Annotation Id="30" Type="comment_count" StartNode="675" EndNode="676">
+</Annotation>
+<Annotation Id="34" Type="long_desc" StartNode="1279" EndNode="1377">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="35" Type="commentid" StartNode="1284" EndNode="1288">
+</Annotation>
+<Annotation Id="32" Type="bug_when" StartNode="689" EndNode="714">
+</Annotation>
+<Annotation Id="33" Type="thetext" StartNode="719" EndNode="1276">
+</Annotation>
+<Annotation Id="38" Type="bug_when" StartNode="1318" EndNode="1343">
+</Annotation>
+<Annotation Id="39" Type="thetext" StartNode="1348" EndNode="1374">
+</Annotation>
+<Annotation Id="36" Type="comment_count" StartNode="1293" EndNode="1294">
+</Annotation>
+<Annotation Id="37" Type="who" StartNode="1299" EndNode="1313">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Marc Saegesser</Value>
+</Feature>
+</Annotation>
+<Annotation Id="42" Type="comment_count" StartNode="1392" EndNode="1393">
+</Annotation>
+<Annotation Id="43" Type="who" StartNode="1398" EndNode="1408">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Sachin Kumar</Value>
+</Feature>
+</Annotation>
+<Annotation Id="40" Type="long_desc" StartNode="1377" EndNode="1496">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="41" Type="commentid" StartNode="1382" EndNode="1387">
+</Annotation>
+<Annotation Id="46" Type="bug_classification" StartNode="1516" EndNode="1519">
+</Annotation>
+<Annotation Id="47" Type="bug" StartNode="1524" EndNode="6349">
+</Annotation>
+<Annotation Id="44" Type="bug_when" StartNode="1413" EndNode="1438">
+</Annotation>
+<Annotation Id="45" Type="thetext" StartNode="1443" EndNode="1493">
+</Annotation>
+<Annotation Id="51" Type="delta_ts" StartNode="1667" EndNode="1692">
+</Annotation>
+<Annotation Id="50" Type="short_desc" StartNode="1597" EndNode="1656">
+</Annotation>
+<Annotation Id="49" Type="creation_ts" StartNode="1561" EndNode="1586">
+</Annotation>
+<Annotation Id="48" Type="bug_id" StartNode="1535" EndNode="1539">
+</Annotation>
+<Annotation Id="55" Type="classification" StartNode="1739" EndNode="1751">
+</Annotation>
+<Annotation Id="54" Type="classification_id" StartNode="1727" EndNode="1728">
+</Annotation>
+<Annotation Id="53" Type="cclist_accessible" StartNode="1715" EndNode="1716">
+</Annotation>
+<Annotation Id="52" Type="reporter_accessible" StartNode="1703" EndNode="1704">
+</Annotation>
+<Annotation Id="59" Type="rep_platform" StartNode="1822" EndNode="1825">
+</Annotation>
+<Annotation Id="58" Type="version" StartNode="1798" EndNode="1811">
+</Annotation>
+<Annotation Id="57" Type="component" StartNode="1781" EndNode="1787">
+</Annotation>
+<Annotation Id="56" Type="product" StartNode="1762" EndNode="1770">
+</Annotation>
+<Annotation Id="63" Type="bug_file_loc" StartNode="1907" EndNode="1907">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="62" Type="resolution" StartNode="1869" EndNode="1874">
+</Annotation>
+<Annotation Id="61" Type="bug_status" StartNode="1850" EndNode="1858">
+</Annotation>
+<Annotation Id="60" Type="op_sys" StartNode="1836" EndNode="1839">
+</Annotation>
+<Annotation Id="68" Type="target_milestone" StartNode="1969" EndNode="1972">
+</Annotation>
+<Annotation Id="69" Type="everconfirmed" StartNode="2005" EndNode="2006">
+</Annotation>
+<Annotation Id="70" Type="reporter" StartNode="2017" EndNode="2023">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Shawn Bayern</Value>
+</Feature>
+</Annotation>
+<Annotation Id="71" Type="assigned_to" StartNode="2034" EndNode="2037">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
+</Feature>
+</Annotation>
+<Annotation Id="64" Type="status_whiteboard" StartNode="1918" EndNode="1918">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="65" Type="keywords" StartNode="1929" EndNode="1929">
+<Feature>
+  <Name className="java.lang.String">isEmptyAndSpan</Name>
+  <Value className="java.lang.String">true</Value>
+</Feature>
+</Annotation>
+<Annotation Id="66" Type="priority" StartNode="1940" EndNode="1942">
+</Annotation>
+<Annotation Id="67" Type="bug_severity" StartNode="1953" EndNode="1958">
+</Annotation>
+<Annotation Id="76" Type="comment_count" StartNode="2139" EndNode="2140">
+</Annotation>
+<Annotation Id="77" Type="who" StartNode="2145" EndNode="2151">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Shawn Bayern</Value>
+</Feature>
+</Annotation>
+<Annotation Id="78" Type="bug_when" StartNode="2156" EndNode="2181">
+</Annotation>
+<Annotation Id="79" Type="thetext" StartNode="2186" EndNode="3810">
+</Annotation>
+<Annotation Id="72" Type="votes" StartNode="2059" EndNode="2060">
+</Annotation>
+<Annotation Id="73" Type="comment_sort_order" StartNode="2096" EndNode="2112">
+</Annotation>
+<Annotation Id="74" Type="long_desc" StartNode="2125" EndNode="3813">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="75" Type="commentid" StartNode="2130" EndNode="2134">
+</Annotation>
+<Annotation Id="85" Type="thetext" StartNode="3884" EndNode="4223">
+</Annotation>
+<Annotation Id="84" Type="bug_when" StartNode="3854" EndNode="3879">
+</Annotation>
+<Annotation Id="87" Type="commentid" StartNode="4231" EndNode="4235">
+</Annotation>
+<Annotation Id="86" Type="long_desc" StartNode="4226" EndNode="4369">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="81" Type="commentid" StartNode="3818" EndNode="3822">
+</Annotation>
+<Annotation Id="80" Type="long_desc" StartNode="3813" EndNode="4226">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="83" Type="who" StartNode="3833" EndNode="3849">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Craig McClanahan</Value>
+</Feature>
+</Annotation>
+<Annotation Id="82" Type="comment_count" StartNode="3827" EndNode="3828">
+</Annotation>
+<Annotation Id="93" Type="commentid" StartNode="4374" EndNode="4379">
+</Annotation>
+<Annotation Id="92" Type="long_desc" StartNode="4369" EndNode="4501">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="95" Type="who" StartNode="4390" EndNode="4394">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Remy Maucherat</Value>
+</Feature>
+</Annotation>
+<Annotation Id="94" Type="comment_count" StartNode="4384" EndNode="4385">
+</Annotation>
+<Annotation Id="89" Type="who" StartNode="4246" EndNode="4262">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Craig McClanahan</Value>
+</Feature>
+</Annotation>
+<Annotation Id="88" Type="comment_count" StartNode="4240" EndNode="4241">
+</Annotation>
+<Annotation Id="91" Type="thetext" StartNode="4297" EndNode="4366">
+</Annotation>
+<Annotation Id="90" Type="bug_when" StartNode="4267" EndNode="4292">
+</Annotation>
+<Annotation Id="102" Type="bug_when" StartNode="4534" EndNode="4559">
+</Annotation>
+<Annotation Id="103" Type="thetext" StartNode="4564" EndNode="6163">
+</Annotation>
+<Annotation Id="100" Type="comment_count" StartNode="4517" EndNode="4518">
+</Annotation>
+<Annotation Id="101" Type="who" StartNode="4523" EndNode="4529">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Jonathan Leech</Value>
+</Feature>
+</Annotation>
+<Annotation Id="98" Type="long_desc" StartNode="4501" EndNode="6166">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="99" Type="commentid" StartNode="4506" EndNode="4512">
+</Annotation>
+<Annotation Id="96" Type="bug_when" StartNode="4399" EndNode="4424">
+</Annotation>
+<Annotation Id="97" Type="thetext" StartNode="4429" EndNode="4498">
+</Annotation>
+<Annotation Id="110" Type="bug_classification" StartNode="6346" EndNode="6349">
+</Annotation>
+<Annotation Id="108" Type="bug_when" StartNode="6198" EndNode="6223">
+</Annotation>
+<Annotation Id="109" Type="thetext" StartNode="6228" EndNode="6323">
+</Annotation>
+<Annotation Id="106" Type="comment_count" StartNode="6182" EndNode="6183">
+</Annotation>
+<Annotation Id="107" Type="who" StartNode="6188" EndNode="6193">
+<Feature>
+  <Name className="java.lang.String">name</Name>
+  <Value className="java.lang.String">Mark Thomas</Value>
+</Feature>
+</Annotation>
+<Annotation Id="104" Type="long_desc" StartNode="6166" EndNode="6326">
+<Feature>
+  <Name className="java.lang.String">isprivate</Name>
+  <Value className="java.lang.String">0</Value>
+</Feature>
+</Annotation>
+<Annotation Id="105" Type="commentid" StartNode="6171" EndNode="6177">
+</Annotation>
+</AnnotationSet>
+
+</GateDocument>

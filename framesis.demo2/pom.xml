@@ -12,10 +12,11 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Private-Package>framesis.demo2</Private-Package>
-            <Bundle-Activator>framesis.demo2.Activator</Bundle-Activator>
+            <Private-Package>framesis.gate</Private-Package>
+            <Bundle-Activator>framesis.gate.GateActivator</Bundle-Activator>
             <Bundle-Version>1.0.0</Bundle-Version>
             <Import-Package>org.osgi.framework</Import-Package>
+            <Export-Package>framesis.gate.SubScenario</Export-Package>
           </instructions>
         </configuration>
       </plugin>    <!-- (2) END -->
@@ -26,6 +27,11 @@
   		<groupId>org.osgi</groupId>
   		<artifactId>org.osgi.core</artifactId>
   		<version>5.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>uk.ac.gate</groupId>
+  		<artifactId>gate-core</artifactId>
+  		<version>7.1</version>
   	</dependency>
   </dependencies>
 </project>

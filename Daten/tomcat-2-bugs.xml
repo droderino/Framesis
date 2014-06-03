@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bugzilla maintainer="bugzilla-admin@apache.org" urlbase="https://issues.apache.org/bugzilla/" version="4.4.2">
+
+    <bug>
+          <bug_id>372</bug_id>
+          
+          <creation_ts>2000-12-22 23:19:00 +0000</creation_ts>
+          <short_desc>examples/ShowSource always reports "Invalid JSP file" due to logic error in ShowSource.java BugRat Report#661</short_desc>
+          <delta_ts>2007-02-24 02:17:36 +0000</delta_ts>
+          <reporter_accessible>1</reporter_accessible>
+          <cclist_accessible>1</cclist_accessible>
+          <classification_id>1</classification_id>
+          <classification>Unclassified</classification>
+          <product>Tomcat 5</product>
+          <component>Jasper</component>
+          <version>Unknown</version>
+          <rep_platform>PC</rep_platform>
+          <op_sys>FreeBSD</op_sys>
+          <bug_status>RESOLVED</bug_status>
+          <resolution>FIXED</resolution>
+          
+          
+          <bug_file_loc/>
+          <status_whiteboard/>
+          <keywords/>
+          <priority>P1</priority>
+          <bug_severity>normal</bug_severity>
+          <target_milestone>---</target_milestone>
+          
+          
+          <everconfirmed>0</everconfirmed>
+          <reporter name="Tony Robertson">tony_robertson</reporter>
+          <assigned_to name="Tomcat Developers Mailing List">dev</assigned_to>
+          
+          <votes>0</votes>
+
+      
+
+      
+
+      
+
+          <comment_sort_order>oldest_to_newest</comment_sort_order>  
+          <long_desc isprivate="0">
+    <commentid>347</commentid>
+    <comment_count>0</comment_count>
+    <who name="Tomcat Developers Mailing List">dev</who>
+    <bug_when>2000-12-22 23:19:25 +0000</bug_when>
+    <thetext>Within the source for the ShowSource tab from the examples
+context, ie. the file installed at:
+$(TOMCAT_HOME)\webapps\examples\WEB-INF\classes\examples\ShowSource.java,
+lines 23 to 26 look like this:
+
+if ((jspFile.indexOf( ".." ) &gt;= 0) ||
+  (jspFile.toUpperCase().indexOf("/WEB-INF/") != 0) ||
+  (jspFile.toUpperCase().indexOf("/META-INF/") != 0))
+  throw new JspTagException("Invalid JSP file " + jspFile);
+
+lines 24 and 25 should use "!= -1" rather than "!= 0"
+
+This effects the "show source" links of all the
+jsp examples that use the "ShowSource" tag.
+
+</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>2989</commentid>
+    <comment_count>1</comment_count>
+    <who name="Marc Saegesser">marc.saegesser</who>
+    <bug_when>2001-06-14 08:26:25 +0000</bug_when>
+    <thetext>Fixed in 3.2.3-dev and 3.3</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>99738</commentid>
+    <comment_count>2</comment_count>
+    <who name="Sachin Kumar">sachinxman</who>
+    <bug_when>2007-02-24 02:17:36 +0000</bug_when>
+    <thetext>Have you fixed the problem ??
+sachinxman@gmail.com</thetext>
+  </long_desc>
+      
+      
+
+    <bug_classification>BUG</bug_classification></bug>
+    <bug>
+          <bug_id>2500</bug_id>
+          
+          <creation_ts>2001-07-08 10:08:00 +0000</creation_ts>
+          <short_desc>FileNotFoundException from service() unintentionally caught</short_desc>
+          <delta_ts>2007-08-04 11:19:18 +0000</delta_ts>
+          <reporter_accessible>1</reporter_accessible>
+          <cclist_accessible>1</cclist_accessible>
+          <classification_id>1</classification_id>
+          <classification>Unclassified</classification>
+          <product>Tomcat 5</product>
+          <component>Jasper</component>
+          <version>Nightly Build</version>
+          <rep_platform>All</rep_platform>
+          <op_sys>All</op_sys>
+          <bug_status>RESOLVED</bug_status>
+          <resolution>FIXED</resolution>
+          
+          
+          <bug_file_loc/>
+          <status_whiteboard/>
+          <keywords/>
+          <priority>P3</priority>
+          <bug_severity>minor</bug_severity>
+          <target_milestone>---</target_milestone>
+          
+          
+          <everconfirmed>1</everconfirmed>
+          <reporter name="Shawn Bayern">bayern</reporter>
+          <assigned_to name="Tomcat Developers Mailing List">dev</assigned_to>
+          
+          <votes>0</votes>
+
+      
+
+      
+
+      
+
+          <comment_sort_order>oldest_to_newest</comment_sort_order>  
+          <long_desc isprivate="0">
+    <commentid>3496</commentid>
+    <comment_count>0</comment_count>
+    <who name="Shawn Bayern">bayern</who>
+    <bug_when>2001-07-08 10:08:25 +0000</bug_when>
+    <thetext>In the service() method of org.apache.jasper.servlet.JspServlet, I believe the 
+scope for which the 'catch FileNotFoundException' block applies is too great;
+if a FileNotFoundException is thrown from within the JSP page, the result is
+an HTTP 404 error.  The calling code believes the JSP resource itself wasn't
+found, when in fact the exception should be treated as internal to the page.
+(You can test with
+
+   &lt;% if (1==1) throw new java.io.FileNotFoundException(); %&gt;
+
+I noticed this problem when debugging the code of a colleague, Shawn Douglas,
+whose component logic called by the JSP page threw a FileNotFoundException.)
+
+The offending code seems to be:
+
+           try {
+                loadIfNecessary(request, response);
+
+                // If a page is to only to be precompiled return.
+                if (precompile)
+                    return;
+
+                if (theServlet instanceof SingleThreadModel) {
+                    // sync on the wrapper so that the freshness
+                    // of the page is determined right before servicing
+                    synchronized (this) {
+                        theServlet.service(request, response);
+                    }
+                } else {
+                    theServlet.service(request, response);
+                }
+
+            } catch (FileNotFoundException ex) {
+
+                    ...
+
+but I haven't had the time to look at it thoroughly.  I believe this affects 
+Tomcat 3.x as well.  The necessary fix should just be to narrow the scope
+of the 'catch' block, but I haven't had a chance to think that through 
+completely or test it.  (Sorry! :-) )</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>3605</commentid>
+    <comment_count>1</comment_count>
+    <who name="Craig McClanahan">craig.mcclanahan</who>
+    <bug_when>2001-07-10 17:48:14 +0000</bug_when>
+    <thetext>It seems to me that Jasper is doing the right thing -- if the application wants
+to use FileNotFoundException internal to a page, it should swallow that
+exception instead of allowing it to propogate back to the container.
+
+Maybe there should be some spec-based description of how exceptions thrown by
+JSP page components should be handled?
+</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>3699</commentid>
+    <comment_count>2</comment_count>
+    <who name="Craig McClanahan">craig.mcclanahan</who>
+    <bug_when>2001-07-12 18:23:51 +0000</bug_when>
+    <thetext>Changing to an "enhancement" request since this is a non-spec issue.
+</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>35199</commentid>
+    <comment_count>3</comment_count>
+    <who name="Remy Maucherat">remm</who>
+    <bug_when>2003-04-15 15:28:44 +0000</bug_when>
+    <thetext>At this point, this will not be fixed (if still present in Jasper 2).</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>100103</commentid>
+    <comment_count>4</comment_count>
+    <who name="Jonathan Leech">jleech</who>
+    <bug_when>2007-03-06 13:27:01 +0000</bug_when>
+    <thetext>I disagree with Remy and Craig, and I think if you polled 10 developers, 11 of
+them would call this a bug.
+
+The specification pretty clearly lays out what is to happen when a .jsp page
+throws an Exception:
+
+public abstract void handlePageException(java.lang.Throwable t)
+This method is intended to process an unhandled ’page’ level exception by
+forwarding the exception to the specified error page for this JSP. If forwarding
+is not possible (for example because the response has already been committed),
+an implementation dependent mechanism should be used to invoke
+the error page (e.g. “including” the error page instead).
+If no error page is defined in the page, the exception should be rethrown so
+that the standard servlet error handling takes over.
+
+In this case, if I specifically define an error page for the .jsp, it is
+invoked, and the 404 error is not reported - Hurray!
+
+However, contrary to the spec, if an error page isn't defined, the standard
+servlet error handling doesn't take over.  For example, defining the following
+in web.xml, according to the servlet spec, dictates that the given error page
+should be invoked when a FileNotFoundException is thrown:
+&lt;error-page&gt;
+   &lt;exception-type&gt;java.io.FileNotFoundException&lt;/exception-type&gt;
+   &lt;location&gt;/error.jsp&lt;/location&gt;
+&lt;/error-page&gt;
+
+As the above doesn't happen, and a 404 error is displayed instead, this behavior
+violates the spec and is a bug.  I am reopening it.  As it is still broken in
+Tomcat5, I am putting that for the Product field.  As it is not an enhancement
+but a bug, I am changing the Severity to 'minor'.</thetext>
+  </long_desc><long_desc isprivate="0">
+    <commentid>106337</commentid>
+    <comment_count>5</comment_count>
+    <who name="Mark Thomas">markt</who>
+    <bug_when>2007-08-04 11:19:18 +0000</bug_when>
+    <thetext>This is now fixed in svn for 5.5.x and 6.0.x and will be included in the next
+releases of each.</thetext>
+  </long_desc>
+      
+      
+
+    <bug_classification>BUG</bug_classification></bug>
+</bugzilla>

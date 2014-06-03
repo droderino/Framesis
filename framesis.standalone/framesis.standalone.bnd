@@ -1,0 +1,4 @@
+Export-Package: framesis.standalone
+Import-Package: framesis.api,\
+	*
+Bundle-Activator: framesis.standalone.Activator

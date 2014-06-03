@@ -1,0 +1,6 @@
+Bundle-Activator: framesis.gate.GateActivator
+
+Private-Package: framesis.gate
+Export-Package: framesis.gate.SubScenario
+Import-Package: framesis.api,\
+	*
