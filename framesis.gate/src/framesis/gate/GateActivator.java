@@ -4,10 +4,12 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 import framesis.api.SubScenarioRegistry;
+import framesis.gate.SubScenario.GateLearning;
 import framesis.gate.SubScenario.GateNEAnalyse;
 import framesis.gate.SubScenario.GateDataExtraction;
 import framesis.gate.SubScenario.GatePrePos;
 import framesis.gate.SubScenario.GatePreRead;
+import framesis.gate.SubScenario.GateSplitInput;
 
 public class GateActivator implements BundleActivator{
 
@@ -17,6 +19,8 @@ public class GateActivator implements BundleActivator{
 		SubScenarioRegistry.register(GatePreRead.class);
 		SubScenarioRegistry.register(GatePrePos.class);
 		SubScenarioRegistry.register(GateNEAnalyse.class);
+		SubScenarioRegistry.register(GateLearning.class);
+		SubScenarioRegistry.register(GateSplitInput.class);
 	}
 
 	@Override
@@ -25,6 +29,8 @@ public class GateActivator implements BundleActivator{
 		SubScenarioRegistry.deregister(GatePreRead.class);
 		SubScenarioRegistry.deregister(GatePrePos.class);
 		SubScenarioRegistry.deregister(GateNEAnalyse.class);
+		SubScenarioRegistry.deregister(GateLearning.class);
+		SubScenarioRegistry.deregister(GateSplitInput.class);
 	}
 
 }

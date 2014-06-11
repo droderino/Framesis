@@ -28,6 +28,7 @@ public class GatePreRead implements SubScenario{
 		config.put(GateParams.PLUGINSHOME, "C:\\Program Files\\GATE_Developer_7.1\\plugins");
 		config.put(GateParams.SITECONFIG, "C:\\Program Files\\GATE_Developer_7.1\\gate.xml");
 		config.put(SOURCE, "");
+		config.put(GateParams.XMLOUT, "false");
 		
 		name = "PRE-GATE-READ";
 		phase = PHASE_PRE;
@@ -63,7 +64,7 @@ public class GatePreRead implements SubScenario{
 			
 			doc.sync();
 			ds.close();
-			result = doc.toXml();
+			result = GateHelper.extractResults(doc, Boolean.parseBoolean(config.get(GateParams.XMLOUT)));
 			
 		} catch (GateException | MalformedURLException e) {
 			e.printStackTrace();

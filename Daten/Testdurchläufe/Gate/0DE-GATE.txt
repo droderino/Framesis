@@ -1,53 +1,38 @@
-<?xml version='1.0' encoding='windows-1252'?>
-<GateDocument version="2">
-<!-- The document's features-->
+DocumentImpl: 
+  content:
 
-<GateDocumentFeatures>
-<Feature>
-  <Name className="java.lang.String">gate.SourceURL</Name>
-  <Value className="java.lang.String">file:/C:/Users/Andreas/AppData/Local/Temp/framesis2752586285560599367/tomcat-2-bugs2124103593376797031.xml</Value>
-</Feature>
-<Feature>
-  <Name className="java.lang.String">MimeType</Name>
-  <Value className="java.lang.String">text/xml</Value>
-</Feature>
-</GateDocumentFeatures>
-<!-- The document content area with serialized nodes -->
-
-<TextWithNodes><Node id="0"/>
-
-    <Node id="6"/>
-          <Node id="17"/>372<Node id="20"/>
+    
+          372
           
-          <Node id="42"/>2000-12-22 23:19:00 +0000<Node id="67"/>
-          <Node id="78"/>examples/ShowSource always reports "Invalid JSP file" due to logic error in ShowSource.java BugRat Report#661<Node id="187"/>
-          <Node id="198"/>2007-02-24 02:17:36 +0000<Node id="223"/>
-          <Node id="234"/>1<Node id="235"/>
-          <Node id="246"/>1<Node id="247"/>
-          <Node id="258"/>1<Node id="259"/>
-          <Node id="270"/>Unclassified<Node id="282"/>
-          <Node id="293"/>Tomcat 5<Node id="301"/>
-          <Node id="312"/>Jasper<Node id="318"/>
-          <Node id="329"/>Unknown<Node id="336"/>
-          <Node id="347"/>PC<Node id="349"/>
-          <Node id="360"/>FreeBSD<Node id="367"/>
-          <Node id="378"/>RESOLVED<Node id="386"/>
-          <Node id="397"/>FIXED<Node id="402"/>
+          2000-12-22 23:19:00 +0000
+          examples/ShowSource always reports "Invalid JSP file" due to logic error in ShowSource.java BugRat Report#661
+          2007-02-24 02:17:36 +0000
+          1
+          1
+          1
+          Unclassified
+          Tomcat 5
+          Jasper
+          Unknown
+          PC
+          FreeBSD
+          RESOLVED
+          FIXED
           
           
-          <Node id="435"/>
-          <Node id="446"/>
-          <Node id="457"/>
-          <Node id="468"/>P1<Node id="470"/>
-          <Node id="481"/>normal<Node id="487"/>
-          <Node id="498"/>---<Node id="501"/>
           
           
-          <Node id="534"/>0<Node id="535"/>
-          <Node id="546"/>tony_robertson<Node id="560"/>
-          <Node id="571"/>dev<Node id="574"/>
           
-          <Node id="596"/>0<Node id="597"/>
+          P1
+          normal
+          ---
+          
+          
+          0
+          tony_robertson
+          dev
+          
+          0
 
       
 
@@ -55,13 +40,13 @@
 
       
 
-          <Node id="633"/>oldest_to_newest<Node id="649"/>  
-          <Node id="662"/>
-    <Node id="667"/>347<Node id="670"/>
-    <Node id="675"/>0<Node id="676"/>
-    <Node id="681"/>dev<Node id="684"/>
-    <Node id="689"/>2000-12-22 23:19:25 +0000<Node id="714"/>
-    <Node id="719"/>Within the source for the ShowSource tab from the examples
+          oldest_to_newest  
+          
+    347
+    0
+    dev
+    2000-12-22 23:19:25 +0000
+    Within the source for the ShowSource tab from the examples
 context, ie. the file installed at:
 $(TOMCAT_HOME)\webapps\examples\WEB-INF\classes\examples\ShowSource.java,
 lines 23 to 26 look like this:
@@ -76,78 +61,78 @@ lines 24 and 25 should use "!= -1" rather than "!= 0"
 This effects the "show source" links of all the
 jsp examples that use the "ShowSource" tag.
 
-<Node id="1276"/>
-  <Node id="1279"/>
-    <Node id="1284"/>2989<Node id="1288"/>
-    <Node id="1293"/>1<Node id="1294"/>
-    <Node id="1299"/>marc.saegesser<Node id="1313"/>
-    <Node id="1318"/>2001-06-14 08:26:25 +0000<Node id="1343"/>
-    <Node id="1348"/>Fixed in 3.2.3-dev and 3.3<Node id="1374"/>
-  <Node id="1377"/>
-    <Node id="1382"/>99738<Node id="1387"/>
-    <Node id="1392"/>2<Node id="1393"/>
-    <Node id="1398"/>sachinxman<Node id="1408"/>
-    <Node id="1413"/>2007-02-24 02:17:36 +0000<Node id="1438"/>
-    <Node id="1443"/>Have you fixed the problem ??
-sachinxman@gmail.com<Node id="1493"/>
-  <Node id="1496"/>
+
+  
+    2989
+    1
+    marc.saegesser
+    2001-06-14 08:26:25 +0000
+    Fixed in 3.2.3-dev and 3.3
+  
+    99738
+    2
+    sachinxman
+    2007-02-24 02:17:36 +0000
+    Have you fixed the problem ??
+sachinxman@gmail.com
+  
       
       
 
-    <Node id="1516"/>BUG<Node id="1519"/>
-    <Node id="1524"/>
-          <Node id="1535"/>2500<Node id="1539"/>
+    BUG
+    
+          2500
           
-          <Node id="1561"/>2001-07-08 10:08:00 +0000<Node id="1586"/>
-          <Node id="1597"/>FileNotFoundException from service() unintentionally caught<Node id="1656"/>
-          <Node id="1667"/>2007-08-04 11:19:18 +0000<Node id="1692"/>
-          <Node id="1703"/>1<Node id="1704"/>
-          <Node id="1715"/>1<Node id="1716"/>
-          <Node id="1727"/>1<Node id="1728"/>
-          <Node id="1739"/>Unclassified<Node id="1751"/>
-          <Node id="1762"/>Tomcat 5<Node id="1770"/>
-          <Node id="1781"/>Jasper<Node id="1787"/>
-          <Node id="1798"/>Nightly Build<Node id="1811"/>
-          <Node id="1822"/>All<Node id="1825"/>
-          <Node id="1836"/>All<Node id="1839"/>
-          <Node id="1850"/>RESOLVED<Node id="1858"/>
-          <Node id="1869"/>FIXED<Node id="1874"/>
-          
-          
-          <Node id="1907"/>
-          <Node id="1918"/>
-          <Node id="1929"/>
-          <Node id="1940"/>P3<Node id="1942"/>
-          <Node id="1953"/>minor<Node id="1958"/>
-          <Node id="1969"/>---<Node id="1972"/>
+          2001-07-08 10:08:00 +0000
+          FileNotFoundException from service() unintentionally caught
+          2007-08-04 11:19:18 +0000
+          1
+          1
+          1
+          Unclassified
+          Tomcat 5
+          Jasper
+          Nightly Build
+          All
+          All
+          RESOLVED
+          FIXED
           
           
-          <Node id="2005"/>1<Node id="2006"/>
-          <Node id="2017"/>bayern<Node id="2023"/>
-          <Node id="2034"/>dev<Node id="2037"/>
           
-          <Node id="2059"/>0<Node id="2060"/>
-
-      
+          
+          
+          P3
+          minor
+          ---
+          
+          
+          1
+          bayern
+          dev
+          
+          0
 
       
 
       
 
-          <Node id="2096"/>oldest_to_newest<Node id="2112"/>  
-          <Node id="2125"/>
-    <Node id="2130"/>3496<Node id="2134"/>
-    <Node id="2139"/>0<Node id="2140"/>
-    <Node id="2145"/>bayern<Node id="2151"/>
-    <Node id="2156"/>2001-07-08 10:08:25 +0000<Node id="2181"/>
-    <Node id="2186"/>In the service() method of org.apache.jasper.servlet.JspServlet, I believe the 
+      
+
+          oldest_to_newest  
+          
+    3496
+    0
+    bayern
+    2001-07-08 10:08:25 +0000
+    In the service() method of org.apache.jasper.servlet.JspServlet, I believe the 
 scope for which the 'catch FileNotFoundException' block applies is too great;
 if a FileNotFoundException is thrown from within the JSP page, the result is
 an HTTP 404 error.  The calling code believes the JSP resource itself wasn't
 found, when in fact the exception should be treated as internal to the page.
 (You can test with
 
-   &lt;% if (1==1) throw new java.io.FileNotFoundException(); %>
+   <% if (1==1) throw new java.io.FileNotFoundException(); %>
 
 I noticed this problem when debugging the code of a colleague, Shawn Douglas,
 whose component logic called by the JSP page threw a FileNotFoundException.)
@@ -178,38 +163,38 @@ The offending code seems to be:
 but I haven't had the time to look at it thoroughly.  I believe this affects 
 Tomcat 3.x as well.  The necessary fix should just be to narrow the scope
 of the 'catch' block, but I haven't had a chance to think that through 
-completely or test it.  (Sorry! :-) )<Node id="3810"/>
-  <Node id="3813"/>
-    <Node id="3818"/>3605<Node id="3822"/>
-    <Node id="3827"/>1<Node id="3828"/>
-    <Node id="3833"/>craig.mcclanahan<Node id="3849"/>
-    <Node id="3854"/>2001-07-10 17:48:14 +0000<Node id="3879"/>
-    <Node id="3884"/>It seems to me that Jasper is doing the right thing -- if the application wants
+completely or test it.  (Sorry! :-) )
+  
+    3605
+    1
+    craig.mcclanahan
+    2001-07-10 17:48:14 +0000
+    It seems to me that Jasper is doing the right thing -- if the application wants
 to use FileNotFoundException internal to a page, it should swallow that
 exception instead of allowing it to propogate back to the container.
 
 Maybe there should be some spec-based description of how exceptions thrown by
 JSP page components should be handled?
-<Node id="4223"/>
-  <Node id="4226"/>
-    <Node id="4231"/>3699<Node id="4235"/>
-    <Node id="4240"/>2<Node id="4241"/>
-    <Node id="4246"/>craig.mcclanahan<Node id="4262"/>
-    <Node id="4267"/>2001-07-12 18:23:51 +0000<Node id="4292"/>
-    <Node id="4297"/>Changing to an "enhancement" request since this is a non-spec issue.
-<Node id="4366"/>
-  <Node id="4369"/>
-    <Node id="4374"/>35199<Node id="4379"/>
-    <Node id="4384"/>3<Node id="4385"/>
-    <Node id="4390"/>remm<Node id="4394"/>
-    <Node id="4399"/>2003-04-15 15:28:44 +0000<Node id="4424"/>
-    <Node id="4429"/>At this point, this will not be fixed (if still present in Jasper 2).<Node id="4498"/>
-  <Node id="4501"/>
-    <Node id="4506"/>100103<Node id="4512"/>
-    <Node id="4517"/>4<Node id="4518"/>
-    <Node id="4523"/>jleech<Node id="4529"/>
-    <Node id="4534"/>2007-03-06 13:27:01 +0000<Node id="4559"/>
-    <Node id="4564"/><![CDATA[I disagree with Remy and Craig, and I think if you polled 10 developers, 11 of
+
+  
+    3699
+    2
+    craig.mcclanahan
+    2001-07-12 18:23:51 +0000
+    Changing to an "enhancement" request since this is a non-spec issue.
+
+  
+    35199
+    3
+    remm
+    2003-04-15 15:28:44 +0000
+    At this point, this will not be fixed (if still present in Jasper 2).
+  
+    100103
+    4
+    jleech
+    2007-03-06 13:27:01 +0000
+    I disagree with Remy and Craig, and I think if you polled 10 developers, 11 of
 them would call this a bug.
 
 The specification pretty clearly lays out what is to happen when a .jsp page
@@ -239,374 +224,139 @@ should be invoked when a FileNotFoundException is thrown:
 As the above doesn't happen, and a 404 error is displayed instead, this behavior
 violates the spec and is a bug.  I am reopening it.  As it is still broken in
 Tomcat5, I am putting that for the Product field.  As it is not an enhancement
-but a bug, I am changing the Severity to 'minor'.]]><Node id="6163"/>
-  <Node id="6166"/>
-    <Node id="6171"/>106337<Node id="6177"/>
-    <Node id="6182"/>5<Node id="6183"/>
-    <Node id="6188"/>markt<Node id="6193"/>
-    <Node id="6198"/>2007-08-04 11:19:18 +0000<Node id="6223"/>
-    <Node id="6228"/>This is now fixed in svn for 5.5.x and 6.0.x and will be included in the next
-releases of each.<Node id="6323"/>
-  <Node id="6326"/>
+but a bug, I am changing the Severity to 'minor'.
+  
+    106337
+    5
+    markt
+    2007-08-04 11:19:18 +0000
+    This is now fixed in svn for 5.5.x and 6.0.x and will be included in the next
+releases of each.
+  
       
       
 
-    <Node id="6346"/>BUG<Node id="6349"/>
-<Node id="6350"/></TextWithNodes>
-<!-- The default annotation set -->
+    BUG
 
-<AnnotationSet>
-</AnnotationSet>
+  defaultAnnots:null
+  encoding:windows-1252
+  features:{gate.SourceURL=file:/C:/Users/Andreas/AppData/Local/Temp/framesis8853946028421224041/tomcat-2-bugs4376588006914936591.xml, MimeType=text/xml}
+  markupAware:true
+  namedAnnotSets:{Original markups=[AnnotationImpl: id=0; type=bugzilla; features={version=4.4.2, urlbase=https://issues.apache.org/bugzilla/, maintainer=bugzilla-admin@apache.org}; start=NodeImpl: id=0; offset=0; end=NodeImpl: id=1; offset=6350
+, AnnotationImpl: id=1; type=bug; features={}; start=NodeImpl: id=2; offset=6; end=NodeImpl: id=3; offset=1519
+, AnnotationImpl: id=2; type=bug_id; features={}; start=NodeImpl: id=4; offset=17; end=NodeImpl: id=5; offset=20
+, AnnotationImpl: id=3; type=creation_ts; features={}; start=NodeImpl: id=6; offset=42; end=NodeImpl: id=7; offset=67
+, AnnotationImpl: id=4; type=short_desc; features={}; start=NodeImpl: id=8; offset=78; end=NodeImpl: id=9; offset=187
+, AnnotationImpl: id=5; type=delta_ts; features={}; start=NodeImpl: id=10; offset=198; end=NodeImpl: id=11; offset=223
+, AnnotationImpl: id=6; type=reporter_accessible; features={}; start=NodeImpl: id=12; offset=234; end=NodeImpl: id=13; offset=235
+, AnnotationImpl: id=7; type=cclist_accessible; features={}; start=NodeImpl: id=14; offset=246; end=NodeImpl: id=15; offset=247
+, AnnotationImpl: id=8; type=classification_id; features={}; start=NodeImpl: id=16; offset=258; end=NodeImpl: id=17; offset=259
+, AnnotationImpl: id=9; type=classification; features={}; start=NodeImpl: id=18; offset=270; end=NodeImpl: id=19; offset=282
+, AnnotationImpl: id=10; type=product; features={}; start=NodeImpl: id=20; offset=293; end=NodeImpl: id=21; offset=301
+, AnnotationImpl: id=11; type=component; features={}; start=NodeImpl: id=22; offset=312; end=NodeImpl: id=23; offset=318
+, AnnotationImpl: id=12; type=version; features={}; start=NodeImpl: id=24; offset=329; end=NodeImpl: id=25; offset=336
+, AnnotationImpl: id=13; type=rep_platform; features={}; start=NodeImpl: id=26; offset=347; end=NodeImpl: id=27; offset=349
+, AnnotationImpl: id=14; type=op_sys; features={}; start=NodeImpl: id=28; offset=360; end=NodeImpl: id=29; offset=367
+, AnnotationImpl: id=15; type=bug_status; features={}; start=NodeImpl: id=30; offset=378; end=NodeImpl: id=31; offset=386
+, AnnotationImpl: id=17; type=bug_file_loc; features={isEmptyAndSpan=true}; start=NodeImpl: id=34; offset=435; end=NodeImpl: id=34; offset=435
+, AnnotationImpl: id=16; type=resolution; features={}; start=NodeImpl: id=32; offset=397; end=NodeImpl: id=33; offset=402
+, AnnotationImpl: id=19; type=keywords; features={isEmptyAndSpan=true}; start=NodeImpl: id=36; offset=457; end=NodeImpl: id=36; offset=457
+, AnnotationImpl: id=18; type=status_whiteboard; features={isEmptyAndSpan=true}; start=NodeImpl: id=35; offset=446; end=NodeImpl: id=35; offset=446
+, AnnotationImpl: id=21; type=bug_severity; features={}; start=NodeImpl: id=39; offset=481; end=NodeImpl: id=40; offset=487
+, AnnotationImpl: id=20; type=priority; features={}; start=NodeImpl: id=37; offset=468; end=NodeImpl: id=38; offset=470
+, AnnotationImpl: id=23; type=everconfirmed; features={}; start=NodeImpl: id=43; offset=534; end=NodeImpl: id=44; offset=535
+, AnnotationImpl: id=22; type=target_milestone; features={}; start=NodeImpl: id=41; offset=498; end=NodeImpl: id=42; offset=501
+, AnnotationImpl: id=25; type=assigned_to; features={name=Tomcat Developers Mailing List}; start=NodeImpl: id=47; offset=571; end=NodeImpl: id=48; offset=574
+, AnnotationImpl: id=24; type=reporter; features={name=Tony Robertson}; start=NodeImpl: id=45; offset=546; end=NodeImpl: id=46; offset=560
+, AnnotationImpl: id=27; type=comment_sort_order; features={}; start=NodeImpl: id=51; offset=633; end=NodeImpl: id=52; offset=649
+, AnnotationImpl: id=26; type=votes; features={}; start=NodeImpl: id=49; offset=596; end=NodeImpl: id=50; offset=597
+, AnnotationImpl: id=29; type=commentid; features={}; start=NodeImpl: id=55; offset=667; end=NodeImpl: id=56; offset=670
+, AnnotationImpl: id=28; type=long_desc; features={isprivate=0}; start=NodeImpl: id=53; offset=662; end=NodeImpl: id=54; offset=1279
+, AnnotationImpl: id=31; type=who; features={name=Tomcat Developers Mailing List}; start=NodeImpl: id=59; offset=681; end=NodeImpl: id=60; offset=684
+, AnnotationImpl: id=30; type=comment_count; features={}; start=NodeImpl: id=57; offset=675; end=NodeImpl: id=58; offset=676
+, AnnotationImpl: id=34; type=long_desc; features={isprivate=0}; start=NodeImpl: id=54; offset=1279; end=NodeImpl: id=65; offset=1377
+, AnnotationImpl: id=35; type=commentid; features={}; start=NodeImpl: id=66; offset=1284; end=NodeImpl: id=67; offset=1288
+, AnnotationImpl: id=32; type=bug_when; features={}; start=NodeImpl: id=61; offset=689; end=NodeImpl: id=62; offset=714
+, AnnotationImpl: id=33; type=thetext; features={}; start=NodeImpl: id=63; offset=719; end=NodeImpl: id=64; offset=1276
+, AnnotationImpl: id=38; type=bug_when; features={}; start=NodeImpl: id=72; offset=1318; end=NodeImpl: id=73; offset=1343
+, AnnotationImpl: id=39; type=thetext; features={}; start=NodeImpl: id=74; offset=1348; end=NodeImpl: id=75; offset=1374
+, AnnotationImpl: id=36; type=comment_count; features={}; start=NodeImpl: id=68; offset=1293; end=NodeImpl: id=69; offset=1294
+, AnnotationImpl: id=37; type=who; features={name=Marc Saegesser}; start=NodeImpl: id=70; offset=1299; end=NodeImpl: id=71; offset=1313
+, AnnotationImpl: id=42; type=comment_count; features={}; start=NodeImpl: id=79; offset=1392; end=NodeImpl: id=80; offset=1393
+, AnnotationImpl: id=43; type=who; features={name=Sachin Kumar}; start=NodeImpl: id=81; offset=1398; end=NodeImpl: id=82; offset=1408
+, AnnotationImpl: id=40; type=long_desc; features={isprivate=0}; start=NodeImpl: id=65; offset=1377; end=NodeImpl: id=76; offset=1496
+, AnnotationImpl: id=41; type=commentid; features={}; start=NodeImpl: id=77; offset=1382; end=NodeImpl: id=78; offset=1387
+, AnnotationImpl: id=46; type=bug_classification; features={}; start=NodeImpl: id=87; offset=1516; end=NodeImpl: id=3; offset=1519
+, AnnotationImpl: id=47; type=bug; features={}; start=NodeImpl: id=88; offset=1524; end=NodeImpl: id=89; offset=6349
+, AnnotationImpl: id=44; type=bug_when; features={}; start=NodeImpl: id=83; offset=1413; end=NodeImpl: id=84; offset=1438
+, AnnotationImpl: id=45; type=thetext; features={}; start=NodeImpl: id=85; offset=1443; end=NodeImpl: id=86; offset=1493
+, AnnotationImpl: id=51; type=delta_ts; features={}; start=NodeImpl: id=96; offset=1667; end=NodeImpl: id=97; offset=1692
+, AnnotationImpl: id=50; type=short_desc; features={}; start=NodeImpl: id=94; offset=1597; end=NodeImpl: id=95; offset=1656
+, AnnotationImpl: id=49; type=creation_ts; features={}; start=NodeImpl: id=92; offset=1561; end=NodeImpl: id=93; offset=1586
+, AnnotationImpl: id=48; type=bug_id; features={}; start=NodeImpl: id=90; offset=1535; end=NodeImpl: id=91; offset=1539
+, AnnotationImpl: id=55; type=classification; features={}; start=NodeImpl: id=104; offset=1739; end=NodeImpl: id=105; offset=1751
+, AnnotationImpl: id=54; type=classification_id; features={}; start=NodeImpl: id=102; offset=1727; end=NodeImpl: id=103; offset=1728
+, AnnotationImpl: id=53; type=cclist_accessible; features={}; start=NodeImpl: id=100; offset=1715; end=NodeImpl: id=101; offset=1716
+, AnnotationImpl: id=52; type=reporter_accessible; features={}; start=NodeImpl: id=98; offset=1703; end=NodeImpl: id=99; offset=1704
+, AnnotationImpl: id=59; type=rep_platform; features={}; start=NodeImpl: id=112; offset=1822; end=NodeImpl: id=113; offset=1825
+, AnnotationImpl: id=58; type=version; features={}; start=NodeImpl: id=110; offset=1798; end=NodeImpl: id=111; offset=1811
+, AnnotationImpl: id=57; type=component; features={}; start=NodeImpl: id=108; offset=1781; end=NodeImpl: id=109; offset=1787
+, AnnotationImpl: id=56; type=product; features={}; start=NodeImpl: id=106; offset=1762; end=NodeImpl: id=107; offset=1770
+, AnnotationImpl: id=63; type=bug_file_loc; features={isEmptyAndSpan=true}; start=NodeImpl: id=120; offset=1907; end=NodeImpl: id=120; offset=1907
+, AnnotationImpl: id=62; type=resolution; features={}; start=NodeImpl: id=118; offset=1869; end=NodeImpl: id=119; offset=1874
+, AnnotationImpl: id=61; type=bug_status; features={}; start=NodeImpl: id=116; offset=1850; end=NodeImpl: id=117; offset=1858
+, AnnotationImpl: id=60; type=op_sys; features={}; start=NodeImpl: id=114; offset=1836; end=NodeImpl: id=115; offset=1839
+, AnnotationImpl: id=68; type=target_milestone; features={}; start=NodeImpl: id=127; offset=1969; end=NodeImpl: id=128; offset=1972
+, AnnotationImpl: id=69; type=everconfirmed; features={}; start=NodeImpl: id=129; offset=2005; end=NodeImpl: id=130; offset=2006
+, AnnotationImpl: id=70; type=reporter; features={name=Shawn Bayern}; start=NodeImpl: id=131; offset=2017; end=NodeImpl: id=132; offset=2023
+, AnnotationImpl: id=71; type=assigned_to; features={name=Tomcat Developers Mailing List}; start=NodeImpl: id=133; offset=2034; end=NodeImpl: id=134; offset=2037
+, AnnotationImpl: id=64; type=status_whiteboard; features={isEmptyAndSpan=true}; start=NodeImpl: id=121; offset=1918; end=NodeImpl: id=121; offset=1918
+, AnnotationImpl: id=65; type=keywords; features={isEmptyAndSpan=true}; start=NodeImpl: id=122; offset=1929; end=NodeImpl: id=122; offset=1929
+, AnnotationImpl: id=66; type=priority; features={}; start=NodeImpl: id=123; offset=1940; end=NodeImpl: id=124; offset=1942
+, AnnotationImpl: id=67; type=bug_severity; features={}; start=NodeImpl: id=125; offset=1953; end=NodeImpl: id=126; offset=1958
+, AnnotationImpl: id=76; type=comment_count; features={}; start=NodeImpl: id=143; offset=2139; end=NodeImpl: id=144; offset=2140
+, AnnotationImpl: id=77; type=who; features={name=Shawn Bayern}; start=NodeImpl: id=145; offset=2145; end=NodeImpl: id=146; offset=2151
+, AnnotationImpl: id=78; type=bug_when; features={}; start=NodeImpl: id=147; offset=2156; end=NodeImpl: id=148; offset=2181
+, AnnotationImpl: id=79; type=thetext; features={}; start=NodeImpl: id=149; offset=2186; end=NodeImpl: id=150; offset=3810
+, AnnotationImpl: id=72; type=votes; features={}; start=NodeImpl: id=135; offset=2059; end=NodeImpl: id=136; offset=2060
+, AnnotationImpl: id=73; type=comment_sort_order; features={}; start=NodeImpl: id=137; offset=2096; end=NodeImpl: id=138; offset=2112
+, AnnotationImpl: id=74; type=long_desc; features={isprivate=0}; start=NodeImpl: id=139; offset=2125; end=NodeImpl: id=140; offset=3813
+, AnnotationImpl: id=75; type=commentid; features={}; start=NodeImpl: id=141; offset=2130; end=NodeImpl: id=142; offset=2134
+, AnnotationImpl: id=85; type=thetext; features={}; start=NodeImpl: id=160; offset=3884; end=NodeImpl: id=161; offset=4223
+, AnnotationImpl: id=84; type=bug_when; features={}; start=NodeImpl: id=158; offset=3854; end=NodeImpl: id=159; offset=3879
+, AnnotationImpl: id=87; type=commentid; features={}; start=NodeImpl: id=163; offset=4231; end=NodeImpl: id=164; offset=4235
+, AnnotationImpl: id=86; type=long_desc; features={isprivate=0}; start=NodeImpl: id=151; offset=4226; end=NodeImpl: id=162; offset=4369
+, AnnotationImpl: id=81; type=commentid; features={}; start=NodeImpl: id=152; offset=3818; end=NodeImpl: id=153; offset=3822
+, AnnotationImpl: id=80; type=long_desc; features={isprivate=0}; start=NodeImpl: id=140; offset=3813; end=NodeImpl: id=151; offset=4226
+, AnnotationImpl: id=83; type=who; features={name=Craig McClanahan}; start=NodeImpl: id=156; offset=3833; end=NodeImpl: id=157; offset=3849
+, AnnotationImpl: id=82; type=comment_count; features={}; start=NodeImpl: id=154; offset=3827; end=NodeImpl: id=155; offset=3828
+, AnnotationImpl: id=93; type=commentid; features={}; start=NodeImpl: id=174; offset=4374; end=NodeImpl: id=175; offset=4379
+, AnnotationImpl: id=92; type=long_desc; features={isprivate=0}; start=NodeImpl: id=162; offset=4369; end=NodeImpl: id=173; offset=4501
+, AnnotationImpl: id=95; type=who; features={name=Remy Maucherat}; start=NodeImpl: id=178; offset=4390; end=NodeImpl: id=179; offset=4394
+, AnnotationImpl: id=94; type=comment_count; features={}; start=NodeImpl: id=176; offset=4384; end=NodeImpl: id=177; offset=4385
+, AnnotationImpl: id=89; type=who; features={name=Craig McClanahan}; start=NodeImpl: id=167; offset=4246; end=NodeImpl: id=168; offset=4262
+, AnnotationImpl: id=88; type=comment_count; features={}; start=NodeImpl: id=165; offset=4240; end=NodeImpl: id=166; offset=4241
+, AnnotationImpl: id=91; type=thetext; features={}; start=NodeImpl: id=171; offset=4297; end=NodeImpl: id=172; offset=4366
+, AnnotationImpl: id=90; type=bug_when; features={}; start=NodeImpl: id=169; offset=4267; end=NodeImpl: id=170; offset=4292
+, AnnotationImpl: id=102; type=bug_when; features={}; start=NodeImpl: id=191; offset=4534; end=NodeImpl: id=192; offset=4559
+, AnnotationImpl: id=103; type=thetext; features={}; start=NodeImpl: id=193; offset=4564; end=NodeImpl: id=194; offset=6163
+, AnnotationImpl: id=100; type=comment_count; features={}; start=NodeImpl: id=187; offset=4517; end=NodeImpl: id=188; offset=4518
+, AnnotationImpl: id=101; type=who; features={name=Jonathan Leech}; start=NodeImpl: id=189; offset=4523; end=NodeImpl: id=190; offset=4529
+, AnnotationImpl: id=98; type=long_desc; features={isprivate=0}; start=NodeImpl: id=173; offset=4501; end=NodeImpl: id=184; offset=6166
+, AnnotationImpl: id=99; type=commentid; features={}; start=NodeImpl: id=185; offset=4506; end=NodeImpl: id=186; offset=4512
+, AnnotationImpl: id=96; type=bug_when; features={}; start=NodeImpl: id=180; offset=4399; end=NodeImpl: id=181; offset=4424
+, AnnotationImpl: id=97; type=thetext; features={}; start=NodeImpl: id=182; offset=4429; end=NodeImpl: id=183; offset=4498
+, AnnotationImpl: id=110; type=bug_classification; features={}; start=NodeImpl: id=206; offset=6346; end=NodeImpl: id=89; offset=6349
+, AnnotationImpl: id=108; type=bug_when; features={}; start=NodeImpl: id=202; offset=6198; end=NodeImpl: id=203; offset=6223
+, AnnotationImpl: id=109; type=thetext; features={}; start=NodeImpl: id=204; offset=6228; end=NodeImpl: id=205; offset=6323
+, AnnotationImpl: id=106; type=comment_count; features={}; start=NodeImpl: id=198; offset=6182; end=NodeImpl: id=199; offset=6183
+, AnnotationImpl: id=107; type=who; features={name=Mark Thomas}; start=NodeImpl: id=200; offset=6188; end=NodeImpl: id=201; offset=6193
+, AnnotationImpl: id=104; type=long_desc; features={isprivate=0}; start=NodeImpl: id=184; offset=6166; end=NodeImpl: id=195; offset=6326
+, AnnotationImpl: id=105; type=commentid; features={}; start=NodeImpl: id=196; offset=6171; end=NodeImpl: id=197; offset=6177
+]}
+  nextAnnotationId:111
+  nextNodeId:207
+  sourceUrl:file:/C:/Users/Andreas/AppData/Local/Temp/framesis8853946028421224041/tomcat-2-bugs4376588006914936591.xml
+  sourceUrlStartOffset:null
+  sourceUrlEndOffset:null
 
-<!-- Named annotation set -->
-
-<AnnotationSet Name="Original markups">
-<Annotation Id="0" Type="bugzilla" StartNode="0" EndNode="6350">
-<Feature>
-  <Name className="java.lang.String">urlbase</Name>
-  <Value className="java.lang.String">https://issues.apache.org/bugzilla/</Value>
-</Feature>
-<Feature>
-  <Name className="java.lang.String">maintainer</Name>
-  <Value className="java.lang.String">bugzilla-admin@apache.org</Value>
-</Feature>
-<Feature>
-  <Name className="java.lang.String">version</Name>
-  <Value className="java.lang.String">4.4.2</Value>
-</Feature>
-</Annotation>
-<Annotation Id="1" Type="bug" StartNode="6" EndNode="1519">
-</Annotation>
-<Annotation Id="2" Type="bug_id" StartNode="17" EndNode="20">
-</Annotation>
-<Annotation Id="3" Type="creation_ts" StartNode="42" EndNode="67">
-</Annotation>
-<Annotation Id="4" Type="short_desc" StartNode="78" EndNode="187">
-</Annotation>
-<Annotation Id="5" Type="delta_ts" StartNode="198" EndNode="223">
-</Annotation>
-<Annotation Id="6" Type="reporter_accessible" StartNode="234" EndNode="235">
-</Annotation>
-<Annotation Id="7" Type="cclist_accessible" StartNode="246" EndNode="247">
-</Annotation>
-<Annotation Id="8" Type="classification_id" StartNode="258" EndNode="259">
-</Annotation>
-<Annotation Id="9" Type="classification" StartNode="270" EndNode="282">
-</Annotation>
-<Annotation Id="10" Type="product" StartNode="293" EndNode="301">
-</Annotation>
-<Annotation Id="11" Type="component" StartNode="312" EndNode="318">
-</Annotation>
-<Annotation Id="12" Type="version" StartNode="329" EndNode="336">
-</Annotation>
-<Annotation Id="13" Type="rep_platform" StartNode="347" EndNode="349">
-</Annotation>
-<Annotation Id="14" Type="op_sys" StartNode="360" EndNode="367">
-</Annotation>
-<Annotation Id="15" Type="bug_status" StartNode="378" EndNode="386">
-</Annotation>
-<Annotation Id="17" Type="bug_file_loc" StartNode="435" EndNode="435">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="16" Type="resolution" StartNode="397" EndNode="402">
-</Annotation>
-<Annotation Id="19" Type="keywords" StartNode="457" EndNode="457">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="18" Type="status_whiteboard" StartNode="446" EndNode="446">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="21" Type="bug_severity" StartNode="481" EndNode="487">
-</Annotation>
-<Annotation Id="20" Type="priority" StartNode="468" EndNode="470">
-</Annotation>
-<Annotation Id="23" Type="everconfirmed" StartNode="534" EndNode="535">
-</Annotation>
-<Annotation Id="22" Type="target_milestone" StartNode="498" EndNode="501">
-</Annotation>
-<Annotation Id="25" Type="assigned_to" StartNode="571" EndNode="574">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
-</Feature>
-</Annotation>
-<Annotation Id="24" Type="reporter" StartNode="546" EndNode="560">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Tony Robertson</Value>
-</Feature>
-</Annotation>
-<Annotation Id="27" Type="comment_sort_order" StartNode="633" EndNode="649">
-</Annotation>
-<Annotation Id="26" Type="votes" StartNode="596" EndNode="597">
-</Annotation>
-<Annotation Id="29" Type="commentid" StartNode="667" EndNode="670">
-</Annotation>
-<Annotation Id="28" Type="long_desc" StartNode="662" EndNode="1279">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="31" Type="who" StartNode="681" EndNode="684">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
-</Feature>
-</Annotation>
-<Annotation Id="30" Type="comment_count" StartNode="675" EndNode="676">
-</Annotation>
-<Annotation Id="34" Type="long_desc" StartNode="1279" EndNode="1377">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="35" Type="commentid" StartNode="1284" EndNode="1288">
-</Annotation>
-<Annotation Id="32" Type="bug_when" StartNode="689" EndNode="714">
-</Annotation>
-<Annotation Id="33" Type="thetext" StartNode="719" EndNode="1276">
-</Annotation>
-<Annotation Id="38" Type="bug_when" StartNode="1318" EndNode="1343">
-</Annotation>
-<Annotation Id="39" Type="thetext" StartNode="1348" EndNode="1374">
-</Annotation>
-<Annotation Id="36" Type="comment_count" StartNode="1293" EndNode="1294">
-</Annotation>
-<Annotation Id="37" Type="who" StartNode="1299" EndNode="1313">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Marc Saegesser</Value>
-</Feature>
-</Annotation>
-<Annotation Id="42" Type="comment_count" StartNode="1392" EndNode="1393">
-</Annotation>
-<Annotation Id="43" Type="who" StartNode="1398" EndNode="1408">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Sachin Kumar</Value>
-</Feature>
-</Annotation>
-<Annotation Id="40" Type="long_desc" StartNode="1377" EndNode="1496">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="41" Type="commentid" StartNode="1382" EndNode="1387">
-</Annotation>
-<Annotation Id="46" Type="bug_classification" StartNode="1516" EndNode="1519">
-</Annotation>
-<Annotation Id="47" Type="bug" StartNode="1524" EndNode="6349">
-</Annotation>
-<Annotation Id="44" Type="bug_when" StartNode="1413" EndNode="1438">
-</Annotation>
-<Annotation Id="45" Type="thetext" StartNode="1443" EndNode="1493">
-</Annotation>
-<Annotation Id="51" Type="delta_ts" StartNode="1667" EndNode="1692">
-</Annotation>
-<Annotation Id="50" Type="short_desc" StartNode="1597" EndNode="1656">
-</Annotation>
-<Annotation Id="49" Type="creation_ts" StartNode="1561" EndNode="1586">
-</Annotation>
-<Annotation Id="48" Type="bug_id" StartNode="1535" EndNode="1539">
-</Annotation>
-<Annotation Id="55" Type="classification" StartNode="1739" EndNode="1751">
-</Annotation>
-<Annotation Id="54" Type="classification_id" StartNode="1727" EndNode="1728">
-</Annotation>
-<Annotation Id="53" Type="cclist_accessible" StartNode="1715" EndNode="1716">
-</Annotation>
-<Annotation Id="52" Type="reporter_accessible" StartNode="1703" EndNode="1704">
-</Annotation>
-<Annotation Id="59" Type="rep_platform" StartNode="1822" EndNode="1825">
-</Annotation>
-<Annotation Id="58" Type="version" StartNode="1798" EndNode="1811">
-</Annotation>
-<Annotation Id="57" Type="component" StartNode="1781" EndNode="1787">
-</Annotation>
-<Annotation Id="56" Type="product" StartNode="1762" EndNode="1770">
-</Annotation>
-<Annotation Id="63" Type="bug_file_loc" StartNode="1907" EndNode="1907">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="62" Type="resolution" StartNode="1869" EndNode="1874">
-</Annotation>
-<Annotation Id="61" Type="bug_status" StartNode="1850" EndNode="1858">
-</Annotation>
-<Annotation Id="60" Type="op_sys" StartNode="1836" EndNode="1839">
-</Annotation>
-<Annotation Id="68" Type="target_milestone" StartNode="1969" EndNode="1972">
-</Annotation>
-<Annotation Id="69" Type="everconfirmed" StartNode="2005" EndNode="2006">
-</Annotation>
-<Annotation Id="70" Type="reporter" StartNode="2017" EndNode="2023">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Shawn Bayern</Value>
-</Feature>
-</Annotation>
-<Annotation Id="71" Type="assigned_to" StartNode="2034" EndNode="2037">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Tomcat Developers Mailing List</Value>
-</Feature>
-</Annotation>
-<Annotation Id="64" Type="status_whiteboard" StartNode="1918" EndNode="1918">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="65" Type="keywords" StartNode="1929" EndNode="1929">
-<Feature>
-  <Name className="java.lang.String">isEmptyAndSpan</Name>
-  <Value className="java.lang.String">true</Value>
-</Feature>
-</Annotation>
-<Annotation Id="66" Type="priority" StartNode="1940" EndNode="1942">
-</Annotation>
-<Annotation Id="67" Type="bug_severity" StartNode="1953" EndNode="1958">
-</Annotation>
-<Annotation Id="76" Type="comment_count" StartNode="2139" EndNode="2140">
-</Annotation>
-<Annotation Id="77" Type="who" StartNode="2145" EndNode="2151">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Shawn Bayern</Value>
-</Feature>
-</Annotation>
-<Annotation Id="78" Type="bug_when" StartNode="2156" EndNode="2181">
-</Annotation>
-<Annotation Id="79" Type="thetext" StartNode="2186" EndNode="3810">
-</Annotation>
-<Annotation Id="72" Type="votes" StartNode="2059" EndNode="2060">
-</Annotation>
-<Annotation Id="73" Type="comment_sort_order" StartNode="2096" EndNode="2112">
-</Annotation>
-<Annotation Id="74" Type="long_desc" StartNode="2125" EndNode="3813">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="75" Type="commentid" StartNode="2130" EndNode="2134">
-</Annotation>
-<Annotation Id="85" Type="thetext" StartNode="3884" EndNode="4223">
-</Annotation>
-<Annotation Id="84" Type="bug_when" StartNode="3854" EndNode="3879">
-</Annotation>
-<Annotation Id="87" Type="commentid" StartNode="4231" EndNode="4235">
-</Annotation>
-<Annotation Id="86" Type="long_desc" StartNode="4226" EndNode="4369">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="81" Type="commentid" StartNode="3818" EndNode="3822">
-</Annotation>
-<Annotation Id="80" Type="long_desc" StartNode="3813" EndNode="4226">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="83" Type="who" StartNode="3833" EndNode="3849">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Craig McClanahan</Value>
-</Feature>
-</Annotation>
-<Annotation Id="82" Type="comment_count" StartNode="3827" EndNode="3828">
-</Annotation>
-<Annotation Id="93" Type="commentid" StartNode="4374" EndNode="4379">
-</Annotation>
-<Annotation Id="92" Type="long_desc" StartNode="4369" EndNode="4501">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="95" Type="who" StartNode="4390" EndNode="4394">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Remy Maucherat</Value>
-</Feature>
-</Annotation>
-<Annotation Id="94" Type="comment_count" StartNode="4384" EndNode="4385">
-</Annotation>
-<Annotation Id="89" Type="who" StartNode="4246" EndNode="4262">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Craig McClanahan</Value>
-</Feature>
-</Annotation>
-<Annotation Id="88" Type="comment_count" StartNode="4240" EndNode="4241">
-</Annotation>
-<Annotation Id="91" Type="thetext" StartNode="4297" EndNode="4366">
-</Annotation>
-<Annotation Id="90" Type="bug_when" StartNode="4267" EndNode="4292">
-</Annotation>
-<Annotation Id="102" Type="bug_when" StartNode="4534" EndNode="4559">
-</Annotation>
-<Annotation Id="103" Type="thetext" StartNode="4564" EndNode="6163">
-</Annotation>
-<Annotation Id="100" Type="comment_count" StartNode="4517" EndNode="4518">
-</Annotation>
-<Annotation Id="101" Type="who" StartNode="4523" EndNode="4529">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Jonathan Leech</Value>
-</Feature>
-</Annotation>
-<Annotation Id="98" Type="long_desc" StartNode="4501" EndNode="6166">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="99" Type="commentid" StartNode="4506" EndNode="4512">
-</Annotation>
-<Annotation Id="96" Type="bug_when" StartNode="4399" EndNode="4424">
-</Annotation>
-<Annotation Id="97" Type="thetext" StartNode="4429" EndNode="4498">
-</Annotation>
-<Annotation Id="110" Type="bug_classification" StartNode="6346" EndNode="6349">
-</Annotation>
-<Annotation Id="108" Type="bug_when" StartNode="6198" EndNode="6223">
-</Annotation>
-<Annotation Id="109" Type="thetext" StartNode="6228" EndNode="6323">
-</Annotation>
-<Annotation Id="106" Type="comment_count" StartNode="6182" EndNode="6183">
-</Annotation>
-<Annotation Id="107" Type="who" StartNode="6188" EndNode="6193">
-<Feature>
-  <Name className="java.lang.String">name</Name>
-  <Value className="java.lang.String">Mark Thomas</Value>
-</Feature>
-</Annotation>
-<Annotation Id="104" Type="long_desc" StartNode="6166" EndNode="6326">
-<Feature>
-  <Name className="java.lang.String">isprivate</Name>
-  <Value className="java.lang.String">0</Value>
-</Feature>
-</Annotation>
-<Annotation Id="105" Type="commentid" StartNode="6171" EndNode="6177">
-</Annotation>
-</AnnotationSet>
-
-</GateDocument>

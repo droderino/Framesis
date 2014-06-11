@@ -7,6 +7,7 @@ import gate.Document;
 import gate.Factory;
 import gate.FeatureMap;
 import gate.Gate;
+import gate.Resource;
 import gate.creole.ResourceInstantiationException;
 import gate.persist.PersistenceException;
 import gate.persist.SerialDataStore;
@@ -24,10 +25,15 @@ import java.util.Map.Entry;
 
 public class GateHelper {
 
-	@SuppressWarnings("unchecked")
 	public static void initAnnie() throws MalformedURLException, GateException {
+		initPlugin("ANNIE");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void initPlugin(String name) throws MalformedURLException, GateException
+	{
 		File pluginDir = Gate.getPluginsHome();
-		File aPluginDir = new File(pluginDir, "ANNIE");
+		File aPluginDir = new File(pluginDir, name);
 		
 		Set<URL> dirs = Gate.getCreoleRegister().getDirectories();
 		if(!dirs.contains(aPluginDir.toURI().toURL()))
@@ -38,20 +44,31 @@ public class GateHelper {
 	public static Document lookForBackup(SerialDataStore ds) throws PersistenceException, ResourceInstantiationException
 	{
 		Document doc = null;
-		List docIds = ds.getLrIds("gate.corpora.DocumentImpl");
+		doc = (Document)lookForResource(ds, "gate.corpora.DocumentImpl", "backup");
+		
+		return doc;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public static Resource lookForResource(SerialDataStore ds, String type, String name) throws PersistenceException, ResourceInstantiationException
+	{
+		Resource res = null;
+		
+		List docIds = ds.getLrIds(type);
 		for(Object o : docIds)
 		{
 			FeatureMap fm = Factory.newFeatureMap();
 			fm.put(DataStore.LR_ID_FEATURE_NAME, o);
 			fm.put(DataStore.DATASTORE_FEATURE_NAME, ds);
 			
-			Document d = (Document) Factory.createResource("gate.corpora.DocumentImpl", fm);
-			if(d.getName().equals("backup"))
-				doc = d;
+			Resource d = Factory.createResource(type, fm);
+			if(d.getName().equals(name))
+				res = d;
 		}
 		
-		return doc;
+		return res;
 	}
+	
 	public static SerialDataStore createDataStore(URI uri) throws PersistenceException, UnsupportedOperationException
 	{
 		File source = new File(uri);
@@ -64,6 +81,26 @@ public class GateHelper {
 			ds = new SerialDataStore(dataStore.toString());
 		
 		return ds;
+	}
+	
+	public static String extractResults(Document doc, boolean xml)
+	{
+		String res = "";
+		if(xml)
+			res = doc.toXml();
+		else
+			res = extractAllInfos(doc); // doc.toString();
+		return res;
+	}
+	
+	public static String extractAllInfos(Document doc)
+	{
+		String ret = "";
+		
+		ret = doc.getContent().toString();
+		ret = ret + "\nNamedAnnotations\n" + extractAnnotationsTable(doc.getNamedAnnotationSets());
+		ret = ret + "\nAnnotations\n" + getAnnotations(doc.getAnnotations());
+		return ret;
 	}
 
 	public static String extractAnnotationsTable(Map<String, AnnotationSet> namedAnno) {

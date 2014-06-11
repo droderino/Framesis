@@ -26,6 +26,7 @@ public class GatePrePos implements SubScenario{
 		config.put(GateParams.PLUGINSHOME, "C:\\Program Files\\GATE_Developer_7.1\\plugins");
 		config.put(GateParams.SITECONFIG, "C:\\Program Files\\GATE_Developer_7.1\\gate.xml");
 		config.put(SOURCE, "");
+		config.put(GateParams.XMLOUT, "false");
 		
 		name = "PRE-GATE-POS";
 		phase = PHASE_PRE;
@@ -51,9 +52,11 @@ public class GatePrePos implements SubScenario{
 			pos.setDocument(doc);
 			pos.execute();
 			
-			result = doc.toXml();
+
+			result = GateHelper.extractResults(doc, Boolean.parseBoolean(config.get(GateParams.XMLOUT)));
 			doc.sync();
 			ds.close();
+			
 		} catch (GateException | MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

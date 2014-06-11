@@ -26,6 +26,7 @@ public class GateDataExtraction implements SubScenario{
 		config.put(GateParams.PLUGINSHOME, "C:\\Program Files\\GATE_Developer_7.1\\plugins");
 		config.put(GateParams.SITECONFIG, "C:\\Program Files\\GATE_Developer_7.1\\gate.xml");
 		config.put(SOURCE, "");
+		config.put(GateParams.XMLOUT, "false");
 		
 		name = "DE-GATE";
 		phase = PHASE_DE;
@@ -45,7 +46,7 @@ public class GateDataExtraction implements SubScenario{
 			
 			Document doc = (Document)Factory.createResource("gate.corpora.DocumentImpl", fm);
 			
-			result = doc.toXml();
+			result = GateHelper.extractResults(doc, Boolean.parseBoolean(config.get(GateParams.XMLOUT)));
 			
 			SerialDataStore ds = GateHelper.createDataStore(uri);
 			ds.open();

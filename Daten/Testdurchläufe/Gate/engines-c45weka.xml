@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ML-CONFIG>
+  <!-- Evaluation : how to split the corpus into test and learn? -->
+  <EVALUATION method="split" runs="1" ratio="0.66"/>
+
+
+  <ENGINE nickname="C45" implementationName="C4.5Weka"/>
+
+  <DATASET>
+     <INSTANCE-TYPE>bug</INSTANCE-TYPE>
+     
+     <ATTRIBUTE>
+	<NAME>Class</NAME>
+	<SEMTYPE>NOMINAL</SEMTYPE>
+	<TYPE>bug_classification</TYPE>
+	<FEATURE>class</FEATURE>
+	<CLASS/>
+      </ATTRIBUTE>
+   </DATASET>
+
+</ML-CONFIG>
+

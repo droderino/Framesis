@@ -30,6 +30,7 @@ public class GateNEAnalyse implements SubScenario{
 		config.put(GateParams.PLUGINSHOME, "C:\\Program Files\\GATE_Developer_7.1\\plugins");
 		config.put(GateParams.SITECONFIG, "C:\\Program Files\\GATE_Developer_7.1\\gate.xml");
 		config.put(SOURCE, "");
+		config.put(GateParams.XMLOUT, "false");
 	}
 	
 	@Override
@@ -49,9 +50,8 @@ public class GateNEAnalyse implements SubScenario{
 			trans.setCorpus(null);
 			trans.setDocument(doc);
 			trans.execute();
-			
-			result = GateHelper.getAnnotations(doc.getAnnotations());
-			//result = doc.toXml();
+
+			result = GateHelper.extractResults(doc, Boolean.parseBoolean(config.get(GateParams.XMLOUT)));
 			ds.delete("gate.corpora.DocumentImpl", doc.getLRPersistenceId());
 			
 			ds.close();

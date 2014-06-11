@@ -105,6 +105,7 @@ public class BugDataPreparation implements SubScenario{
 				{
 					Element clazz = xml.createElement("bug_classification");
 					clazz.appendChild(xml.createTextNode(classification));
+					clazz.setAttribute("class", classification);
 					node.appendChild(clazz);
 				}
 			}
